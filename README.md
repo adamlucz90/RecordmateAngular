@@ -11,6 +11,6 @@ The search system is operational with the exception of the ebay results.
 
 Here are screenshots of the search system working:
 
-![Alt text](http://imgur.com/moeXZib "Search Home Page")
+![Alt text](http://i.imgur.com/moeXZib.jpg "Search Home Page")
 
-![Alt text](http://imgur.com/LCy17CY "Search Result Page")
+![Alt text](http://i.imgur.com/LCy17CY.jpg "Search Result Page")
