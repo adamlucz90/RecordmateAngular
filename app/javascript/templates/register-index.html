@@ -1,0 +1,29 @@
+<section id="log">
+	<div class="col-xs-5"></div>
+    <div class="col-xs-2">
+	<h2>Register</h2>
+    	<form name="registerForm" ng-submit="registerSubmit()" novalidate>
+         	<fieldset>
+            	<div class="form-group" ng-class="{ 'has-error' : registerForm.n=username.$invalid && !registerForm.username.$pristine }">
+                	<input autocomplete="off" autofocus class="form-control" ng-model="username" ng-minlength="1" placeholder="Username" type="text" required/>
+                	<p ng-show="registerForm.username.$invalid && !registerForm.username.$pristine" class="help-block">Please enter your Username</p>
+                	<p ng-show="userExists" class="help-block">Username already exists</p>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" ng-model="password" ng-minlength="6" placeholder="Password (min 6 chars)" type="password" required/>
+                    <p ng-show="registerForm.password.$error.minlength" class="help-block">Your password is too short</p>
+                    <p ng-show="registerForm.password.$invalid && !registerForm.password.$pristine" class="help-block">Please enter your password</p>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" ng-model="confirmation" placeholder="Confirm Password" type="password" required/>
+                    <p ng-show="registerForm.confirmation.$invalid && !registerForm.confirmation.$pristine" class="help-block">Please confirm your password</p>
+                    <p ng-show="match" class="help-block">Your passwords do not match</p>
+                </div>
+                <div class="form-group">
+            		<input type="submit" id="submit" class="btn btn-success" ng-disabled="registerForm.$invalid" value="Register"/>
+                </div>
+             </fieldset>
+         </form>    
+        </div>
+        <div class="col-xs-5"></div>
+</section>

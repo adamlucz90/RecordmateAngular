@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="recordmate">
+    <head>
+        <!--get Angular-->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+            
+        <!-- get j-query-->
+        <script src="https://code.jquery.com/jquery-2.2.3.js"></script> 
+        
+        <!-- get bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        
+        <!-- link stylesheet-->
+        <link rel="stylesheet" href="/css/styles.css"/>
+        
+        <!--link the app module-->
+        <script type="text/javascript" src="/javascript/app.js"></script>
+        
+        <!--link the routes-->
+        <script type="text/javascript" src="/javascript/routes/route.js"></script>
+        
+        <!--link the controllers-->
+        <script type="text/javascript" src="/javascript/controllers/searchController.js"></script>
+        <script type="text/javascript" src="/javascript/controllers/albumInfoController.js"></script>
+        <script type="text/javascript" src="/javascript/controllers/registerController.js"></script>
+                
+        <!--link the services-->
+        <script type="text/javascript" src="/javascript/services/albumSearch.js"></script>  
+        <script type="text/javascript" src="/javascript/services/loginFactory.js"></script> 
+                
+        <title>RecordMate- Find The Music You Love</title>
+    </head>
+
+    <header class="jumbotron col-xs-12">
+        <h1><a href="https://ide50-adamlucz90.cs50.io/">RecordMate</a></h1>
+        <h3 class="text-muted">Find the music you love!</h3>
+
+    <!--NavBar-->
+    <nav class="navbar  col-xs-12" id="nav">
+      <a class="navbar-brand" href="https://ide50-adamlucz90.cs50.io/">RecordMate</a>
+      <ul class="nav navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#!/search" id="navSearch">Search<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#!/wishlist" id="wishClick">Wishlist</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#!/collection" id="collectionClick">My Collection</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="logclick" href="#!/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="logclick" href="#!/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/php/logout.php" id="logout">Logout</a>
+        </li>
+      </ul>
+      <form class="form-inline pull-xs-right" id="user-search">
+        <input class="form-control" type="text" name ="user" id="user-search-form" placeholder="Search User's Wishlist" required>
+        <button class="btn btn-success-outline" type="submit">Search</button>
+      </form>
+    </nav>
+    </header>
+
+    <body>
+        <div ng-view></div>
+    </body>
+    
+    <footer class="col-xs-12">
+        <p>&copy 2016 Adam Lucz</p>
+    </footer>
+</html>
