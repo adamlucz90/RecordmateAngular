@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="recordmate">
+    <head>
+        <!--get Angular-->
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+            
+        <!-- get j-query-->
+        <script src="https://code.jquery.com/jquery-2.2.3.js"></script> 
+        
+        <!-- get bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        
+        <!-- link stylesheet-->
+        <link rel="stylesheet" href="/css/styles.css"/>
+        
+        <!--link the app module-->
+        <script type="text/javascript" src="/app.js"></script>
+        
+        <!--link the routes-->
+        <script type="text/javascript" src="/routes/route.js"></script>
+        
+        <!--link the controllers-->
+        <script type="text/javascript" src="/controllers/searchController.js"></script>
+        <script type="text/javascript" src="/controllers/albumInfoController.js"></script>
+        <script type="text/javascript" src="/controllers/registerController.js"></script>
+        <script type="text/javascript" src="/controllers/loginController.js"></script>
+        <script type="text/javascript" src="/controllers/navController.js"></script>
+                                
+        <!--link the services-->
+        <script type="text/javascript" src="/services/albumSearch.js"></script>  
+        <script type="text/javascript" src="/services/userAuthenticate.js"></script> 
+        <script type="text/javascript" src="/services/collection.js"></script> 
+                
+        <!--link the directives-->
+        <script type="text/javascript" src="/directives/navDirective.js"></script>
+                
+        <title>RecordMate- Find The Music You Love</title>
+    </head>
+
+    <header class="jumbotron col-xs-12">
+        <h1><a href="#!/search">RecordMate</a></h1>
+        <h3 class="text-muted">Find the music you love!</h3>
+    </header>
+
+    <body>
+        <div ng-view></div>
+    </body>
+    
+    <footer class="col-xs-12">
+        <p>&copy 2016 Adam Lucz</p>
+    </footer>
+</html>

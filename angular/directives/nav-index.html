@@ -1,0 +1,28 @@
+    <!--NavBar-->
+    <nav class="navbar  col-xs-12" id="nav">
+      <a class="navbar-brand" href="#!/search">RecordMate</a>
+      <ul class="nav navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#!/search" id="navSearch">Search<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a ng-show="loggedIn" class="nav-link" href="#!/wishlist" id="wishClick">Wishlist</a>
+        </li>
+        <li class="nav-item">
+            <a ng-show="loggedIn" class="nav-link" href="#!/collection" id="collectionClick">My Collection</a>
+        </li>
+        <li class="nav-item">
+          <a ng-show="!loggedIn" class="nav-link" href="#!/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a ng-show="!loggedIn" class="nav-link" href="#!/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a ng-show="loggedIn" class="nav-link" href="" ng-click="logout()" id="logout">Logout</a>
+        </li>
+      </ul>
+      <form class="form-inline pull-xs-right" id="user-search">
+        <input class="form-control" type="text" name ="user" id="user-search-form" placeholder="Search User's Wishlist" required>
+        <button class="btn btn-success-outline" type="submit">Search</button>
+      </form>
+    </nav>
