@@ -4,7 +4,7 @@ angular
 		
 		var wishlistAdd = function(item){
 			return $http.post('/api/wishlistAdd', item).success(function(data){
-	        console.log("added");
+	        console.log(data);
 	      });
 		};
 		

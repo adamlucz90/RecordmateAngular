@@ -29,31 +29,15 @@ userSchema.methods.generateJwt = function() {
     _id: this._id,
     name: this.name,
     exp: parseInt(expiry.getTime() / 1000),
-  }, "MY_SECRET"); // DO NOT KEEP YOUR SECRET IN THE CODE!
+  }, "MY_SECRET"); // NEEDS TO BE CHANGED
 };
 
-var collectionSchema = new mongoose.Schema({
-	username: {
-		type: String,
-		required: true
-	},
-	artist: {
-		type: String,
-		required: true
-	},
-	album: {
-		type: String,
-		required: true
-	},
-	url: {
-		type: String,
-		required: true
-	},
-	type: {
-		type: String,
-		required: true
-	}
-});
+var wishlistSchema = new mongoose.Schema({
+	username: String,
+	artist: String,
+	album: String,
+	url: String
+}, {collection: 'wishlist'});
 
 mongoose.model('User', userSchema);
-mongoose.model('collection', collectionSchema);
+mongoose.model('Wishlist', wishlistSchema);
