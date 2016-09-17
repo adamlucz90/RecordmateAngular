@@ -20,3 +20,4 @@ Here are screenshots of the search system working:
 ![Alt text](http://i.imgur.com/moeXZib.jpg "Search Home Page")
 
 ![Alt text](http://i.imgur.com/LCy17CY.jpg "Search Result Page")
+blah blah blah
