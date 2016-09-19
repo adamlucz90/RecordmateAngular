@@ -27,9 +27,13 @@ angular.
         }).
         when('/collection', {
         	templateUrl: '/templates/collection-index.html',
+        	controller: 'collectionController',
+        	controllerAs: 'collectionCtrl'
         }).
         when('/wishlist', {
         	templateUrl: '/templates/wishlist-index.html',
+        	controller: 'wishlistController',
+        	controllerAs: 'wishlistCtrl'
         }).
         otherwise({redirectTo: '/search'});
 

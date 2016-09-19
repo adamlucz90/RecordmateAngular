@@ -50,4 +50,15 @@ angular.
 					console.log("success!!!");
 				});	
 		};
+
+		$scope.collectionAdd = function(){
+			collection
+				.collectionAdd(wishItem)
+				.error(function(err){
+					console.log(err);
+				})
+				.then(function(){
+					console.log("success!!!");
+				});	
+		};
 	}]);

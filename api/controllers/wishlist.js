@@ -1,14 +1,14 @@
 var mongoose = require('mongoose');
-var collect = mongoose.model('Collection');
+var wish = mongoose.model('Wishlist');
 
 var sendJSONresponse = function(res, status, content) {
   res.status(status);
   res.json(content);
 };
 
-module.exports.collectionAdd = function(req, res){
+module.exports.wishlistAdd = function(req, res){
 	
-	collect.findOne({username: req.body.username, artist: req.body.artist, album: req.body.album}, function(err, collectItem){
+	wish.findOne({username: req.body.username, artist: req.body.artist, album: req.body.album}, function(err, wishItem){
 		if(err){
 			console.log("error");
 			res.status(401).json({
@@ -16,13 +16,13 @@ module.exports.collectionAdd = function(req, res){
 			});
 		}
 		
-		if(collectItem){
+		if(wishItem){
 			res.status(200).json({
 				"found": "true"
 			});	
 		}
 		else{
-			collect.create({
+			wish.create({
 				username: req.body.username,
 				artist: req.body.artist,
 				album: req.body.album,
@@ -40,9 +40,9 @@ module.exports.collectionAdd = function(req, res){
 	});		
 };
 
-module.exports.collectionRemove = function(req, res){
+module.exports.wishlistRemove = function(req, res){
 	
-	collect.findOneAndRemove({username: req.body.username, artist: req.body.artist, album: req.body.album}, function(err, item, result){
+	wish.findOneAndRemove({username: req.body.username, artist: req.body.artist, album: req.body.album}, function(err, item, result){
 		if(err){
 			res.status(400);
 		}
@@ -51,9 +51,9 @@ module.exports.collectionRemove = function(req, res){
 	});
 };
 
-module.exports.collectionRender = function(req, res){
+module.exports.wishlistRender = function(req, res){
 
-	collect.find({username: req.body.user}).lean().exec(function(err, items){
+	wish.find({username: req.body.user}).lean().exec(function(err, items){
 		if(err){
 			res.status(400);
 		}

@@ -132,6 +132,7 @@ footer {
 	font-weight: bold;
   color: #c2c2a3;
   background-color: #c2c2a3;
+  float: left;
 }
 
 
@@ -144,11 +145,13 @@ footer {
 	font-weight: bold;
   color: #c2c2a3;
   background-color: #c2c2a3;
+  float: left;
 }
 
 .panel-heading {
+	color: black;
   font-weight: bold;
-  background-color: #c2c2a3;
+  background-color: white;
 }
 
 .panel-body button {

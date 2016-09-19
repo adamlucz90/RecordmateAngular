@@ -20,13 +20,13 @@
                 	<button ng-show="loggedIn" ng-click="wishlistAdd()" class="btn btn-success"  type="button">Add to Wishlist!</button>
                 </div>
                 <div id="collectButton" class="col-xs-8">
-                	<button ng-show="loggedIn" ng-click="collection()" class="btn btn-success" type="button">Add to Collection</button>
+                	<button ng-show="loggedIn" ng-click="collectionAdd()" class="btn btn-success" type="button">Add to Collection</button>
                 </div>
 
                 <h3 ng-show="!loggedIn">Login or Register to add to wishlist!</h3>
 
                 <div id="cover-img">
-                	<img ng-src="{{cover[3]}}"/>
+                	<img ng-src="{{cover[3]}}" class="img-responsive"/>
                 </div>
             </div>
         </section>

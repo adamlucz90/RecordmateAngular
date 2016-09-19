@@ -7,10 +7,18 @@ var auth = jwt({
 });
 
 var ctrlAuth = require('../controllers/authenticate');
+var ctrlWishlist = require('../controllers/wishlist');
 var ctrlCollection = require('../controllers/collection');
 
-// collections
-router.post('/wishlistAdd', ctrlCollection.wishlistAdd);
+// wishlist
+router.post('/wishlistAdd', ctrlWishlist.wishlistAdd);
+router.post('/wishlistRemove', ctrlWishlist.wishlistRemove);
+router.post('/wishlistRender', ctrlWishlist.wishlistRender);
+
+//collection
+router.post('/collectionAdd', ctrlCollection.collectionAdd);
+router.post('/collectionRemove', ctrlCollection.collectionRemove);
+router.post('/collectionRender', ctrlCollection.collectionRender);
 
 // authentication
 router.post('/register', ctrlAuth.register);

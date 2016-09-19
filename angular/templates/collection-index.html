@@ -1,7 +1,18 @@
 	<navigationbar></navigationbar>
     <!--Collection Section-->
     <section id="collection" class="col-xs-12">
-        <h1 id="collectionGreet" >'s Collection</h1>
-        <h1 id="collectionEmpty">You have nothing in your collection!</h1>
-            <ul id="collectionItems" class="list-inline"></ul>
+        <h1 id="collectionGreet" >{{user}}'s Collection</h1>
+        <h1 id="collectionEmpty" ng-show="empty">You have nothing in your collection!</h1>
+            <ul id="collectionItems" class="list-inline" ng-repeat="item in items">
+            	<li>
+            		<div class="panel-heading">
+            			<h4>{{item.artist}}</h4>
+            			<h4>{{item.album}}</h4>
+            		</div>
+            		<div class="panel-body">
+            			<img ng-src="{{item.url}}" class="img-responsive" href=" " ng-click="albumSearch(item.artist, item.album)"/>
+            			<button class="btn btn-success" ng-click="collectRemove(item.artist, item.album)">REMOVE</button>
+            		</div>
+            	</li>            	
+            </ul>
     </section>

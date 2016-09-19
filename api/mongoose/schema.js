@@ -39,5 +39,13 @@ var wishlistSchema = new mongoose.Schema({
 	url: String
 }, {collection: 'wishlist'});
 
+var collectionSchema = new mongoose.Schema({
+	username: String,
+	artist: String,
+	album: String,
+	url: String
+}, {collection: 'collection'});
+
 mongoose.model('User', userSchema);
 mongoose.model('Wishlist', wishlistSchema);
+mongoose.model('Collection', collectionSchema);

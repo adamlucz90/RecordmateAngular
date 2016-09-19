@@ -14,14 +14,6 @@
     "karma-firefox-launcher": "^0.1.7",
     "karma-jasmine": "^0.3.8",
     "protractor": "^3.2.2",
-    "express": "4.14.0",
-    "body-parser": "1.15.2",
-    "jsonwebtoken": "5.7.0",
-    "mongodb": "2.2.8",
-    "mongoose": "4.5.10",
-    "passport": "0.3.2",
-    "passport-local": "1.0.0",
-    "serve-favicon": "2.3.0"
   },
   "scripts": {
     "postinstall": "bower install",
@@ -47,6 +39,14 @@
     "passport": "~0.3.2",
     "passport-local": "~1.0.0",
     "pug": "^2.0.0-beta6",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+    "express": "4.14.0",
+    "body-parser": "1.15.2",
+    "jsonwebtoken": "5.7.0",
+    "mongodb": "2.2.8",
+    "mongoose": "4.5.10",
+    "passport": "0.3.2",
+    "passport-local": "1.0.0",
+    "serve-favicon": "2.3.0"
   }
 }

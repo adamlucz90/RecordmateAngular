@@ -3,7 +3,19 @@
     <section id="wishlist" class="col-xs-12">
         <div id="friendList" ><ul></ul></div>
         <h1 id="searchGreet" ></h1>
-        <h1 id="wishGreet" >'s Wishlist</h1>
-        <h1 hidden="true" id="wishEmpty">You have nothing in your wishlist!</h1>
-            <ul id="wishItems" class="list-inline"></ul>
+        <h1 id="wishGreet" >{{user}}'s Wishlist</h1>
+        <h1 ng-show="empty">You have nothing in your wishlist!</h1>
+            <ul id="wishItems" class="list-inline" ng-repeat="item in items">
+            	<li>
+            		<div class="panel-heading">
+            			<h4>{{item.artist}}</h4>
+            			<h4>{{item.album}}</h4>
+            		</div>
+            		<div class="panel-body">
+            			<img ng-src="{{item.url}}" class="img-responsive" href=" " ng-click="albumSearch(item.artist, item.album)"/>
+            			<button class="btn btn-success" ng-click="wishRemove(item.artist, item.album)">REMOVE</button>
+            			<button class="btn btn-success" ng-click="collectAdd(item.artist, item.album, item.url)">Add to Collection</button>
+            		</div>
+            	</li>
+            </ul>
     </section>
