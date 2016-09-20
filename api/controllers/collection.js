@@ -18,7 +18,7 @@ module.exports.collectionAdd = function(req, res){
 		
 		if(collectItem){
 			res.status(200).json({
-				"found": "true"
+				"notAdded": "true"
 			});	
 		}
 		else{

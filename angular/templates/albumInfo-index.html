@@ -12,15 +12,20 @@
            		<ul style="list-style-type:none" ng-repeat="track in tracks">
            			<li>{{track}}</li>
            		</ul>
+
            		<p>{{tags}}</p>
+
+
           </div> 	
             
           <div id="cover" class="col-xs-5">
                 <div id="addButton" class="col-xs-8">
-                	<button ng-show="loggedIn" ng-click="wishlistAdd()" class="btn btn-success"  type="button">Add to Wishlist!</button>
+                	<p ng-show="inList">Album is already in your Wishlist!</p>
+                	<button ng-show="loggedIn" ng-click="wishlistAdd()" class="btn btn-success"  type="button" ng-disabled="inList">Add to Wishlist!</button>
                 </div>
                 <div id="collectButton" class="col-xs-8">
-                	<button ng-show="loggedIn" ng-click="collectionAdd()" class="btn btn-success" type="button">Add to Collection</button>
+                	<p ng-show="inCollect">Album is already in your Collection!</p>
+                	<button ng-show="loggedIn" ng-click="collectionAdd()" class="btn btn-success" type="button" ng-disabled="inCollect">Add to Collection</button>
                 </div>
 
                 <h3 ng-show="!loggedIn">Login or Register to add to wishlist!</h3>

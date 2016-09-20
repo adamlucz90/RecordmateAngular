@@ -18,7 +18,7 @@ module.exports.wishlistAdd = function(req, res){
 		
 		if(wishItem){
 			res.status(200).json({
-				"found": "true"
+				"notAdded": "true"
 			});	
 		}
 		else{

@@ -43,22 +43,20 @@ angular.
 		$scope.wishlistAdd = function(){
 			collection
 				.wishlistAdd(wishItem)
-				.error(function(err){
-					console.log(err);
-				})
-				.then(function(){
-					console.log("success!!!");
-				});	
+				.success(function(data){
+					if(data.notAdded){
+						$scope.inList = true;
+					}
+				});
 		};
 
 		$scope.collectionAdd = function(){
 			collection
 				.collectionAdd(wishItem)
-				.error(function(err){
-					console.log(err);
-				})
-				.then(function(){
-					console.log("success!!!");
-				});	
+				.success(function(data){
+					if(data.notAdded){
+						$scope.inCollect = true;
+					}
+				});
 		};
 	}]);
