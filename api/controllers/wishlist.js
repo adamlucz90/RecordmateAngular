@@ -10,10 +10,7 @@ module.exports.wishlistAdd = function(req, res){
 	
 	wish.findOne({username: req.body.username, artist: req.body.artist, album: req.body.album}, function(err, wishItem){
 		if(err){
-			console.log("error");
-			res.status(401).json({
-				"err": err
-			});
+			return res.status(500);
 		}
 		
 		if(wishItem){
@@ -29,8 +26,7 @@ module.exports.wishlistAdd = function(req, res){
 				url: req.body.url
 			}, function(err, item){
 				if(err){
-					console.log(err);
-					res.status(400);
+					res.status(500);
 				}
 				res.status(200).json({
 					"added": "true"
@@ -44,9 +40,10 @@ module.exports.wishlistRemove = function(req, res){
 	
 	wish.findOneAndRemove({username: req.body.username, artist: req.body.artist, album: req.body.album}, function(err, item, result){
 		if(err){
-			res.status(400);
+			return res.status(500);
 		}
 		
+		//send back ok status
 		res.status(200).json(item);
 	});
 };
@@ -55,11 +52,11 @@ module.exports.wishlistRender = function(req, res){
 
 	wish.find({username: req.body.user}).lean().exec(function(err, items){
 		if(err){
-			res.status(400);
+			return res.status(500);
 		}
 		
-		if(items){
-			res.status(200).json({items});
-		}
+		//send back ok status and the wishlist items
+		res.status(200).json({items});
+		
 	});
 };

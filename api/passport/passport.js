@@ -7,7 +7,10 @@ passport.use(new LocalStrategy({
     usernameField: 'username'
   },
   function(username, password, done) {
-    User.findOne({ name: username }, function (err, user) {
+  	//Allows for user input that's not case sensitive
+  	var pass = password.toLowerCase();
+  	
+    User.findOne({ name: username.toLowerCase() }, function (err, user) {
       if (err) { return done(err); }
       // Return if user not found in database
       if (!user) {
@@ -16,7 +19,7 @@ passport.use(new LocalStrategy({
         });
       }
       // Return if password is wrong
-      if (!user.validPassword(password)) {
+      if (!user.validPassword(pass)) {
         return done(null, false, {
           message: 'Password is wrong'
         });

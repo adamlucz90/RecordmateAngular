@@ -18,12 +18,15 @@ angular.
 			else{
 			userAuth
 				.register($scope.user)
-				.error(function(err){
-					console.log("register error");
-				})
-				.then(function(){
-					$location.path('/search');
-				});
+				.success(function(data){
+	      			if(data.user){
+	      				$scope.userExists = true;
+	      			}
+	      			else{
+	        			userAuth.saveToken(data.token);
+	        			$location.path('/search');
+	        		}
+	      		});
 			}
 		};
 		

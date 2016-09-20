@@ -63,15 +63,12 @@ angular
 		
 		//calls the API endpoint to register
 		var register = function(user){
-	      return $http.post('/api/register', user).success(function(data){
-	        saveToken(data.token);
-	      });			
+	      return $http.post('/api/register', user);			
 		};
 		
 		//calls the API endpoint to login
 		var login = function(user){
 		    return $http.post('/api/login', user).success(function(data) {
-		    	
         		saveToken(data.token);
       		});
       	};
