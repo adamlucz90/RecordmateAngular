@@ -35,13 +35,7 @@ angular
 		
 		//When user clicks on the album cover, call the albumsearch function and return them to album info page
 		$scope.albumSearch = function(artist, album){
-			Search.albumSet(artist, album).
-				then(function(){
-					Search.youtubeSet(artist, album).
-					then(function(){
-							$location.path('/albumInfo');
-					});
-				});			
+			Search.albumSet(artist, album);			
 		}
 		
 	}]);

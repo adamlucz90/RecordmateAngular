@@ -11,7 +11,6 @@ module.exports.register = function(req, res) {
 
 	//Allows user input that's not case sensitive
 	var username = req.body.username.toLowerCase();
-	var pass = req.body.password.toLowerCase();
 
 
 	

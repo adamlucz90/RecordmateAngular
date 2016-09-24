@@ -45,4 +45,12 @@
                   <input type="radio" ng-model="format.cassette" value="cassette">Cassette
                 </label>
             </div>
+       	</form> 
+       	<h2>Search by Artist</h2>
+       	<form id="form-search-artist" ng-submit="artistSearch()" class="form-inline">
+       		<div class="form-group">
+       			<input type="text" ng-model="artistSearch.artist" placeholder="Arist" class="form-control" required/>
+       		</div>
+       		<input type="submit" class="btn btn-success" value="Search!"/>
+       	</form>
     </section>

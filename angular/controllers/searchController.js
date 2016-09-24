@@ -8,26 +8,18 @@ angular.
 			var album = $scope.searchAlbum.album;
 			var format = $scope.format;
 			
-			Search.albumSet(artist, album).
-				then(function(){
-					Search.youtubeSet(artist, album).
-					then(function(){
-							$location.path('/albumInfo');
-					});
-				});
+			Search.albumSet(artist, album);
 		};
 		
 		$scope.songSearch = function(){
 			var format = $scope.format;
 			
-			Search.albumSet($scope.songAlbum.artist, $scope.songAlbum.album).
-				then(function(){
-					Search.youtubeSet($scope.searchAlbum.artist, $scope.searchAlbum.album).
-					then(function(){
-							$location.path('/albumInfo');
-					});
-				});
+			Search.songSet($scope.searchSong.artist, $scope.searchSong.track);
 
+		};
+		
+		$scope.artistSearch = function(){
+			Search.topAlbumSearch($scope.artistSearch.artist);
 		};
 	}]);
 	

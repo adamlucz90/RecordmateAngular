@@ -25,6 +25,11 @@ angular.
         	controller: 'AlbumInfoController',
         	controllerAs: 'infoCtrl',
         }).
+        when('/artistInfo', {
+        	templateUrl: '/templates/artistInfo-index.html',
+        	controller: 'artistInfoController',
+        	controllerAs: 'artistCtrl'
+        }).
         when('/collection', {
         	templateUrl: '/templates/collection-index.html',
         	controller: 'collectionController',

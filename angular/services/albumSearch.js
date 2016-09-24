@@ -1,32 +1,29 @@
 angular.
 	module("recordmate").
-	factory("Search", ['$http', function SearchFactory($http){
+	factory("Search", ['$location', '$http', function SearchFactory($location, $http){
 		var albumInfo = {};
 		var youtubeInfo = {};
 		var ebayInfo = {};
+		var artistInfo = {};
 		
 			function albumSet(artist, album){
 				return $http.get("https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=d17e980eb9b1ea8c7dd060939eac110d&artist=" + artist + "&album=" + album + "&format=json").
-			 		then(function success(response){
-			 			
-			 			albumInfo = response.data;
-			 		},
-			 		function error(response){
-			 			console.log(response.data);
+			 		success(function(data){
+			 			albumInfo = data;
+			 			youtubeSet(artist, album)
+			 				.then(function(data){
+			 					$location.path('/albumInfo');
+			 				});
 			 		});
 			};
 
 			function songSet(artist, track){
-				return $http.get("https://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=d17e980eb9b1ea8c7dd060939eac110d&artist=" + artist + "&album=" + track + "&format=json").
-			 		then(function success(response){
-           			 	var artist = response.data.track.album.artist;
-            			var album = response.data.track.album.title;
-            		
-            			albumSet(artist, album);			 			
+				return $http.get("https://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=d17e980eb9b1ea8c7dd060939eac110d&artist=" + artist + "&track=" + track + "&format=json").
+			 		success(function(data){
+							
+            			//run the album search function to then fill in the rest of the info
+            			albumSet(data.track.album.artist, data.track.album.title);			 			
 			 			
-			 		},
-			 		function error(response){
-			 			console.log(response.data);
 			 		});
 			};
 			
@@ -68,6 +65,14 @@ angular.
         		
 			};
 			
+			function topAlbumSearch(artist){
+				$http.get("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" + artist + "&api_key=d17e980eb9b1ea8c7dd060939eac110d&format=json").
+					success(function(data){
+						//console.log(data.topalbums.album);
+						artistInfo = data.topalbums.album;
+						$location.path('/artistInfo');
+					})
+			};
 
 			
 			
@@ -83,6 +88,10 @@ angular.
 				return ebayInfo;
 			};
 			
+			function artistGet(){
+				return artistInfo;
+			};
+			
 		return{
 			albumSet: albumSet,
 			songSet: songSet,
@@ -90,7 +99,9 @@ angular.
 			ebaySet: ebaySet,
 			albumGet: albumGet,
 			youtubeGet: youtubeGet,
-			ebayGet: ebayGet
+			ebayGet: ebayGet,
+			topAlbumSearch: topAlbumSearch,
+			artistGet: artistGet
 			
 		}
 		
