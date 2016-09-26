@@ -1,6 +1,6 @@
 angular.
 	module("recordmate").
-	factory("Search", ['$location', '$http', function SearchFactory($location, $http){
+	factory("Search", ['$location', '$http', 'notifications', function SearchFactory($location, $http, notifications){
 		var albumInfo = {};
 		var youtubeInfo = {};
 		var ebayInfo = {};
@@ -9,21 +9,29 @@ angular.
 			function albumSet(artist, album){
 				return $http.get("https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=d17e980eb9b1ea8c7dd060939eac110d&artist=" + artist + "&album=" + album + "&format=json").
 			 		success(function(data){
+			 			if(data.error){
+			 			 	notifications.showError({message: "Album Not Found"});	
+			 			}
+			 			else{
 			 			albumInfo = data;
 			 			youtubeSet(artist, album)
 			 				.then(function(data){
 			 					$location.path('/albumInfo');
 			 				});
+			 			}
 			 		});
 			};
 
 			function songSet(artist, track){
 				return $http.get("https://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=d17e980eb9b1ea8c7dd060939eac110d&artist=" + artist + "&track=" + track + "&format=json").
 			 		success(function(data){
-							
-            			//run the album search function to then fill in the rest of the info
-            			albumSet(data.track.album.artist, data.track.album.title);			 			
-			 			
+						if(data.error){
+			 			 	notifications.showError({message: "Song Not Found"});	
+			 			}
+			 			else{	
+	            			//run the album search function to then fill in the rest of the info
+	            			albumSet(data.track.album.artist, data.track.album.title);			 			
+			 			}
 			 		});
 			};
 			
@@ -68,9 +76,14 @@ angular.
 			function topAlbumSearch(artist){
 				$http.get("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" + artist + "&api_key=d17e980eb9b1ea8c7dd060939eac110d&format=json").
 					success(function(data){
-						//console.log(data.topalbums.album);
-						artistInfo = data.topalbums.album;
-						$location.path('/artistInfo');
+						if(data.error){
+			 			 	notifications.showError({message: "Artist Not Found"});	
+			 			}
+			 			else{
+							//console.log(data.topalbums.album);
+							artistInfo = data.topalbums.album;
+							$location.path('/artistInfo');
+						}
 					})
 			};
 

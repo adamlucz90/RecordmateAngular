@@ -1,1 +1,1 @@
-angular.module('recordmate', ['ngRoute', 'ngSanitize']);
+angular.module('recordmate', ['ngRoute', 'ngSanitize', 'ngNotificationsBar']);
