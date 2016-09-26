@@ -6,6 +6,8 @@ angular.
 		
 		$scope.albumInfo = Search.albumGet();
 		
+		$scope.wiki = $scope.albumInfo.album.wiki.summary;
+		
 		$scope.tracks = $scope.albumInfo.album.tracks.track.map(function(obj){
         					return obj.name;
     					});
@@ -29,34 +31,37 @@ angular.
 		$scope.ebayInfo = Search.ebayGet();
 		console.log($scope.ebayInfo);
 		
-		var username = userAuth.getUser();
-		
-		var wishItem = {
-			username: username.name,
-			artist: $scope.albumInfo.album.artist,
-			album: $scope.albumInfo.album.name,
-			url: $scope.cover[3],
-		};
-		
-		$scope.wishAble = false;
-		
-		$scope.wishlistAdd = function(){
-			collection
-				.wishlistAdd(wishItem)
-				.success(function(data){
-					if(data.notAdded){
-						$scope.inList = true;
-					}
-				});
-		};
-
-		$scope.collectionAdd = function(){
-			collection
-				.collectionAdd(wishItem)
-				.success(function(data){
-					if(data.notAdded){
-						$scope.inCollect = true;
-					}
-				});
+		if($scope.loggedIn){
+			var username = userAuth.getUser();
+			
+			
+			var wishItem = {
+				username: username.name,
+				artist: $scope.albumInfo.album.artist,
+				album: $scope.albumInfo.album.name,
+				url: $scope.cover[3],
+			};
+			
+			$scope.wishAble = false;
+			
+			$scope.wishlistAdd = function(){
+				collection
+					.wishlistAdd(wishItem)
+					.success(function(data){
+						if(data.notAdded){
+							$scope.inList = true;
+						}
+					});
+			};
+	
+			$scope.collectionAdd = function(){
+				collection
+					.collectionAdd(wishItem)
+					.success(function(data){
+						if(data.notAdded){
+							$scope.inCollect = true;
+						}
+					});
+			};
 		};
 	}]);

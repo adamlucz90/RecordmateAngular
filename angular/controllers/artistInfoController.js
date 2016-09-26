@@ -2,7 +2,13 @@ angular.
 	module("recordmate").
 	controller("artistInfoController", ['$scope', 'Search', 'collection', 'userAuth', function($scope, Search, collection, userAuth){
 		
-		var user = userAuth.getUser().name;
+		var user; 
+		
+		$scope.isLoggedIn = userAuth.isLogged();
+		
+		if($scope.isLoggedIn){
+			user = userAuth.getUser().name;
+		};
 		
 		$scope.albums = Search.artistGet();
 		
