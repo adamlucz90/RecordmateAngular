@@ -1,6 +1,7 @@
 angular.
 	module("recordmate").
-	controller('loginController', ['$scope', '$location', 'userAuth', function($scope, $location, userAuth){
+	controller('loginController', ['$scope', '$location', 'userAuth', 'notifications',
+	 function($scope, $location, userAuth, notifications){
 		//boolean to display error message
 		$scope.invalid = false;
 		
@@ -16,10 +17,11 @@ angular.
 			userAuth
 				.login($scope.user)
 				.error(function(err){
-					$scope.error = err.message;
-					$scope.invalid = true;
+					//If there's an error display the message
+					notifications.showError({message: err.message + "."});
 				})
 				.then(function(){
+					//redirect back to search page
 					$location.path('/search');
 				});
 		};
