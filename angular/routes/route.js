@@ -1,9 +1,17 @@
 angular.
   module('recordmate').
-  config(['$locationProvider' ,'$routeProvider',
-    function config($locationProvider, $routeProvider) {
+  config(['$locationProvider' ,'$routeProvider', 'notificationsConfigProvider',
+    function config($locationProvider, $routeProvider, notificationsConfigProvider) {
+	    //config for ngNotificationsBar
+	    // auto hide
+	    notificationsConfigProvider.setAutoHide(true);
+	
+	    // delay before hide
+	    notificationsConfigProvider.setHideDelay(5000);    	
+    	
       $locationProvider.hashPrefix('!');
-
+      
+	//config for routeprovider
       $routeProvider.
         when('/search', {
             templateUrl: '/templates/search-index.html',

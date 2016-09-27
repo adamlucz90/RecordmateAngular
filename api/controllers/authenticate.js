@@ -31,7 +31,7 @@ module.exports.register = function(req, res) {
 			  
 			  user.name = username;
 			
-			  user.setPassword(pass);
+			  user.setPassword(req.body.password);
 			
 			  user.save(function(err) {
 			    var token;

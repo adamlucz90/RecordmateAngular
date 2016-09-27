@@ -130,6 +130,7 @@ footer {
 }
 
 #wishlist li {
+	display: inline-block;
 	padding: 0px;
 	margin: 0px 1% 1% 0px;
 	width: 200px;

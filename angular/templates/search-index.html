@@ -1,8 +1,9 @@
 	<navigationbar></navigationbar>
     <section id="search" class="col-xs-12">
+    	<notifications-bar class="notifications"></notifications-bar>
         <h2>Search by Album</h2>
         <!--search by album form-->
-        <form id="form-search" ng-submit="search()" class="form-inline">
+        <form id="form-search" ng-submit="albumSearch()" class="form-inline">
             <div class="form-group">
                 <input type="text" ng-model="searchAlbum.artist" placeholder="Artist" class="form-control" required/>
             </div>

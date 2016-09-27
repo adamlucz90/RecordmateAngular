@@ -2,17 +2,15 @@
     <section id="log">
         <div class="col-xs-5"></div>
         <div class="col-xs-2">
+        <notifications-bar class="notifications"></notifications-bar>
                 <h2>Log In</h2>
-                <h4 ng-show="invalid">{{error}}</h4>
                 <form name="login" ng-submit="onSubmit()" novalidate>
                     <fieldset>
                         <div class="form-group" ng-class="{'has-error' : login.user.username.$invalid && !login.user.username.$pristine}">
                             <input autocomplete="off" autofocus class="form-control" id="user" ng-model="user.username" placeholder="Username" type="text" required/>
-                            <p ng-show="login.user.username.$invalid && !login.user.username.$pristine" class="help-block">Please enter your username</p>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" ng-model="user.password" placeholder="Password" type="password" required/>
-                            <p ng-show="login.user.password.$invalid && !login.user.password.$pristine" class="help-block">Please enter your password</p>                            
+                            <input class="form-control" ng-model="user.password" placeholder="Password (Case Sensitive)" type="password" required/>                           
                         </div>
                         <div class="form-group">
             		<input type="submit" id="submit" class="btn btn-success" ng-disabled="login.$invalid" value="Log in!"/>
