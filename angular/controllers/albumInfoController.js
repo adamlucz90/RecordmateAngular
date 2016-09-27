@@ -43,26 +43,12 @@ angular.
 					url: $scope.cover[3],
 				};
 				
-				$scope.wishAble = false;
-				
 				$scope.wishlistAdd = function(){
-					collection
-						.wishlistAdd(wishItem)
-						.success(function(data){
-							if(data.notAdded){
-								$scope.inList = true;
-							}
-						});
+					collection.wishlistAdd(wishItem);
 				};
 		
 				$scope.collectionAdd = function(){
-					collection
-						.collectionAdd(wishItem)
-						.success(function(data){
-							if(data.notAdded){
-								$scope.inCollect = true;
-							}
-						});
+					collection.collectionAdd(wishItem);
 				};
 			};
 	}]);

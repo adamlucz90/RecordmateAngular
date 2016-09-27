@@ -9,6 +9,12 @@ var auth = jwt({
 var ctrlAuth = require('../controllers/authenticate');
 var ctrlWishlist = require('../controllers/wishlist');
 var ctrlCollection = require('../controllers/collection');
+var ctrlFriend = require('../controllers/friendlist');
+
+//friendlist
+router.post('/friendlistAdd', ctrlFriend.friendlistAdd);
+router.post('/friendlistRemove', ctrlFriend.friendlistRemove);
+router.post('/friendlistRender', ctrl.Friend.friendlistRender);
 
 // wishlist
 router.post('/wishlistAdd', ctrlWishlist.wishlistAdd);

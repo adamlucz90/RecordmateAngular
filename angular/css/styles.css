@@ -139,20 +139,20 @@ footer {
 	font-weight: bold;
   color: #c2c2a3;
   background-color: #c2c2a3;
-  float: left;
+  vertical-align: top;
 }
 
 
 #collection li {
 	padding: 0px;
-	margin: 0px 5px 0px 5px;
+	margin: 0px 1% 1% 5px;
 	width: 200px;
 	text-align: center;
 	font-family: Century Gothic;
 	font-weight: bold;
   color: #c2c2a3;
   background-color: #c2c2a3;
-  float: left;
+  vertical-align: top;
 }
 
 .panel-heading {

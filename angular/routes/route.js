@@ -48,6 +48,11 @@ angular.
         	controller: 'wishlistController',
         	controllerAs: 'wishlistCtrl'
         }).
+        when('/profile', {
+        	templateUrl: '/templates/profile-index.html',
+        	controller: 'profileController',
+        	controllerAs: 'profileCtrl'
+        }).
         otherwise({redirectTo: '/search'});
 
     }
@@ -63,5 +68,9 @@ angular.
   			//redirect them back to homepage
   			$location.path('/search');
   		}
-  	})
-  }])
+  		else if ($location.path() === '/profile' && !userAuth.isLogged()){
+  			//redirect them back to the homepage
+  			$location.path('/search');
+  		}
+  	});
+  }]);

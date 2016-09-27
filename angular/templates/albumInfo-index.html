@@ -22,11 +22,9 @@
             
           <div id="cover" class="col-xs-5">
                 <div id="addButton" class="col-xs-8">
-                	<p ng-show="inList">Album is already in your Wishlist!</p>
                 	<button ng-show="loggedIn" ng-click="wishlistAdd()" class="btn btn-success"  type="button" ng-disabled="inList">Add to Wishlist!</button>
                 </div>
                 <div id="collectButton" class="col-xs-8">
-                	<p ng-show="inCollect">Album is already in your Collection!</p>
                 	<button ng-show="loggedIn" ng-click="collectionAdd()" class="btn btn-success" type="button" ng-disabled="inCollect">Add to Collection</button>
                 </div>
 

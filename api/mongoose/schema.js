@@ -46,6 +46,12 @@ var collectionSchema = new mongoose.Schema({
 	url: String
 }, {collection: 'collection'});
 
+var friendSchema = new mongoose.Schema({
+	username: String,
+	friendname: String
+}, {collection: 'friendlist'});
+
 mongoose.model('User', userSchema);
 mongoose.model('Wishlist', wishlistSchema);
 mongoose.model('Collection', collectionSchema);
+mongoose.model('Friendlist', friendSchema);

@@ -1,10 +1,15 @@
 angular
 	.module("recordmate")
-	.service("collection", ['$http', '$location', 
-		function($http, $location){
+	.service("collection", ['$http', '$location', 'notifications',
+		function($http, $location, notifications){
 			
 			var wishlistAdd = function(item){
-				return $http.post('/api/wishlistAdd', item);
+				return $http.post('/api/wishlistAdd', item)
+						.success(function(data){
+							if(data.notAdded){
+								notifications.showError({message: "Item is already in your wishlist!"});
+							}
+						});
 			};
 			
 			var wishlistRemove = function(item){
@@ -16,7 +21,12 @@ angular
 			};
 			
 			var collectionAdd = function(item){
-				return $http.post('/api/collectionAdd', item);
+				return $http.post('/api/collectionAdd', item)
+						.success(function(data){
+							if(data.notAdded){
+								notifications.showError({message: "Item is already in your collection!"});
+							}
+						})
 			};
 			
 			var collectionRemove = function(item){
