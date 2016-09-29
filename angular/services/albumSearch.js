@@ -37,7 +37,7 @@ angular.
 				};
 				
 				function youtubeSet(artist, album){
-					return $http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + artist + "+" + album + "&key=AIzaSyDVrxcnUUeCzL0Ek8vsZjWkveDDxIsNuD0").
+					return $http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=" + artist + "+" + album + "&key=AIzaSyDVrxcnUUeCzL0Ek8vsZjWkveDDxIsNuD0").
 						then(function success(response){
 							youtubeInfo = response.data;
 						}, 

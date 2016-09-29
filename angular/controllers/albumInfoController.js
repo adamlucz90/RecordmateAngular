@@ -7,7 +7,13 @@ angular.
 			
 			$scope.albumInfo = Search.albumGet();
 			
-			$scope.wiki = $scope.albumInfo.album.wiki.summary;
+			//ensure there is a wiki element
+			if($scope.albumInfo.album.wiki){
+				$scope.wiki = $scope.albumInfo.album.wiki.summary;
+			}
+			else{
+				$scope.wiki = false;
+			}
 			
 			$scope.tracks = $scope.albumInfo.album.tracks.track.map(function(obj){
 	        					return obj.name;

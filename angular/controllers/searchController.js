@@ -15,9 +15,7 @@ angular.
 		$scope.songSearch = function(){
 			var format = $scope.format;
 			
-			Search.songSet($scope.searchSong.artist, $scope.searchSong.track).error(function(err){
-				console.log(err);
-			});
+			Search.songSet($scope.searchSong.artist, $scope.searchSong.track);
 
 		};
 		

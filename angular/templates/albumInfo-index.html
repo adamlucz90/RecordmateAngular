@@ -8,8 +8,8 @@
            <div id="info" class="col-xs-7">
            		<h1>{{albumInfo.album.artist}}</h1>
            		<h1>{{albumInfo.album.name}}</h1>
-           		<p ng-bind-html="wiki"></p>
-           		<p ng-show="!albumInfo.album.wiki.summary">No info available.</p>
+           		<p ng-show="wiki" ng-bind-html="wiki"></p>
+           		<p ng-show="!wiki">No info available.</p>
            		<h3>Tracklist</h3>
            		<ul style="list-style-type:none" ng-repeat="track in tracks">
            			<li>{{track}}</li>
