@@ -8,7 +8,7 @@ var sendJSONresponse = function(res, status, content) {
 
 module.exports.wishlistAdd = function(req, res){
 	
-	wish.findOne({username: req.body.username, artist: req.body.artist, album: req.body.album}, function(err, wishItem){
+	wish.findOne({username: req.params.username, artist: req.body.artist, album: req.body.album}, function(err, wishItem){
 		if(err){
 			return res.status(500);
 		}
@@ -38,7 +38,7 @@ module.exports.wishlistAdd = function(req, res){
 
 module.exports.wishlistRemove = function(req, res){
 	
-	wish.findOneAndRemove({username: req.body.username, artist: req.body.artist, album: req.body.album}, function(err, item, result){
+	wish.findOneAndRemove({username: req.params.username, artist: req.params.artist, album: req.params.album}, function(err, item, result){
 		if(err){
 			return res.status(500);
 		}
@@ -50,7 +50,7 @@ module.exports.wishlistRemove = function(req, res){
 
 module.exports.wishlistRender = function(req, res){
 
-	wish.find({username: req.body.user}).lean().exec(function(err, items){
+	wish.find({username: req.params.username}).lean().exec(function(err, items){
 		if(err){
 			return res.status(500);
 		}

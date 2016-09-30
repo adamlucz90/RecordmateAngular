@@ -4,7 +4,12 @@ angular
 		function($http, $location, notifications){
 			
 			var wishlistAdd = function(item){
-				return $http.post('/api/wishlistAdd', item)
+				var username = encodeURIComponent(item.username);
+				
+				var url = '/api/user/:username/wishlist'
+				  .replace(':username', username);					
+				
+				return $http.post(url, item)
 						.success(function(data){
 							if(data.notAdded){
 								notifications.showError({message: "Item is already in your wishlist!"});
@@ -16,18 +21,34 @@ angular
 			};
 			
 			var wishlistRemove = function(item){
-				return $http.post('/api/wishlistRemove', item)
+				var username = encodeURIComponent(item.username);
+				var artist = encodeURIComponent(item.artist);				
+				var album = encodeURIComponent(item.album);
+				
+				var url = '/api/user/:username/wishlist/artist/:artist/album/:album'
+				  .replace(':username', username)
+				  .replace(':artist', artist)
+				  .replace(':album', album);				
+				
+				return $http.delete(url)
 					.success(function(data){
 						notifications.showSuccess({message: "Item successfully removed from your wishlist"});
 					});
 			};
 			
 			var wishlistRender = function(user){
-				return $http.post('/api/wishlistRender', user);
+				const username = encodeURIComponent(user);
+				return $http.get('/api/user/' + username + '/wishlist');
 			};
 			
 			var collectionAdd = function(item){
-				return $http.post('/api/collectionAdd', item)
+				var username = encodeURIComponent(item.user);
+				
+				var url = '/api/user/:username/collection'
+				  .replace(':username', username);				
+				
+				
+				return $http.post(url, item)
 						.success(function(data){
 							if(data.notAdded){
 								notifications.showError({message: "Item is already in your collection!"});
@@ -40,14 +61,24 @@ angular
 			};
 			
 			var collectionRemove = function(item){
-				return $http.post('/api/collectionRemove', item)
+				var username = encodeURIComponent(item.username);
+				var artist = encodeURIComponent(item.artist);				
+				var album = encodeURIComponent(item.album);
+				
+				var url = '/api/user/:username/collection/artist/:artist/album/:album'
+				  .replace(':username', username)
+				  .replace(':artist', artist)
+				  .replace(':album', album);
+				
+				return $http.delete(url)
 					.success(function(data){
 						notifications.showSuccess({message: "Item successfully removed from your collection!"});
 					});
 			};
 			
 			var collectionRender = function(user){
-				return $http.post('/api/collectionRender', user);
+				const username = encodeURIComponent(user);
+				return $http.get('/api/user/' + username + '/collection');
 			};		
 			
 			return {

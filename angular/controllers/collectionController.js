@@ -10,18 +10,21 @@ angular
 			$scope.items;
 			
 			//create variable to pass to render function
-			var user = {user: $scope.user};
+			//var user = {user: $scope.user};
 			
 			//render the wishlist
-			$scope.render = collection.collectionRender(user).success(function(data){
-				//if there are items fill wishlist, if not show empty wishlist message
-				if(data.items[0]){
-					$scope.items = data.items;
-				}
-				else{
-					$scope.empty = true;
-				}
-			});
+			var render = function(){
+				collection.collectionRender($scope.user).success(function(data){
+					//if there are items fill wishlist, if not show empty wishlist message
+					if(data.items[0]){
+						$scope.items = data.items;
+					}
+					else{
+						$scope.empty = true;
+						$scope.items = [];
+					}
+				});
+			};
 			
 			//When user clicks remove, the function is called to remove the item from the wishlist
 			$scope.collectRemove = function(artist, album){
@@ -31,7 +34,10 @@ angular
 					album: album
 				};
 				
-				collection.collectionRemove(item);
+				collection.collectionRemove(item).then(function(){
+					render();
+				});
+
 			}
 			
 			//When user clicks on the album cover, call the albumsearch function and return them to album info page
@@ -39,4 +45,5 @@ angular
 				Search.albumSet(artist, album);			
 			}
 			
+			render();
 	}]);

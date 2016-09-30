@@ -8,10 +8,8 @@ angular
 			
 			//call to the logout function is userAuthenticate
 			$scope.logout = function(){
-				userAuth.logout()
-					// .then(function(){
-						// $location.path('/search');
-					// });
+				userAuth.logout();
+				$scope.loggedIn = false;
 			};
 		
 	}])
