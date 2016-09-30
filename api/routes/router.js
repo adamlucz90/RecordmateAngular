@@ -14,7 +14,7 @@ var ctrlFriend = require('../controllers/friendlist');
 //friendlist
 router.post('/friendlistAdd', ctrlFriend.friendlistAdd);
 router.post('/friendlistRemove', ctrlFriend.friendlistRemove);
-router.post('/friendlistRender', ctrl.Friend.friendlistRender);
+router.post('/friendlistRender', ctrlFriend.friendlistRender);
 
 // wishlist
 router.post('/wishlistAdd', ctrlWishlist.wishlistAdd);
