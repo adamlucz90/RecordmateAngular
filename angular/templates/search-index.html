@@ -1,6 +1,7 @@
 	<navigationbar></navigationbar>
     <section id="search" class="col-xs-12">
     	<notifications-bar class="notifications"></notifications-bar>
+    	
         <h2>Search by Album</h2>
         <!--search by album form-->
         <form id="form-search" ng-submit="albumSearch()" class="form-inline">
@@ -22,9 +23,8 @@
                   <input type="radio" ng-model="format.cassette" value="cassette">Cassette
                 </label>
             </div>
-        <!--Search Fail prompt-->
-        <h2 id="fail"></h2>
         </form>
+        
         <!--Search by Song form-->
         <h2>Search by Song</h2>
         <form id="form-search-song" ng-submit="songSearch()" class="form-inline">
@@ -47,6 +47,7 @@
                 </label>
             </div>
        	</form> 
+       	
        	<h2>Search by Artist</h2>
        	<form id="form-search-artist" ng-submit="artistSearch()" class="form-inline">
        		<div class="form-group">

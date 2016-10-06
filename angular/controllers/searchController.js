@@ -2,6 +2,7 @@ angular.
 	module('recordmate').
 	controller('searchController', ['$scope', '$http', 'Search', '$location', 
 		function($scope, $http, Search, $location){
+			
 		
 		//function to run album search on submit
 		$scope.albumSearch =  function(){

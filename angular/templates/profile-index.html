@@ -6,7 +6,18 @@
 			<img/>
 		</div>
 		<div>
-			<p>BIO</p>
+			<p ng-show="!bioEditMode">BIO</p>
+			<a ng-show="!bioEditMode" ng-click="bioEdit()">edit</a>
+			<form ng-show="bioEditMode" id="user-bio" ng-submit="bioSubmit()" novalidate>
+				<fieldset>
+					<div class="form-group">
+						<textarea ng-model="bioInput" rows="6" cols="50" form="user-bio"></textarea>
+					</div>
+					<div class="form-group">
+						<input type="submit" id="submit" class="btn btn-success" value="Submit!"/>
+					</div>
+				</fieldset>
+			</form>
 		</div>
 		<div>
 			<p>friendlist</p>
@@ -14,8 +25,27 @@
 	</section>
 	<section id="lists" class="col-xs-5">
 		<div>
-			<p>wishlist carosel</p>
-			<p>friendslist carosel</p>
+          <div id="browse-carousel" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-inner" role="listbox" ng-repeat="item in wishItems">
+            	<li active="item.active">
+            		<div class="panel-heading">
+            			<h4>{{item.artist}}</h4>
+            			<h4>{{item.album}}</h4>
+            		</div>
+            		<div class="panel-body">
+            			<img ng-src="{{item.url}}" class="img-responsive" href=" " ng-click="albumSearch(item.artist, item.album)"/>
+            			<button class="btn btn-success" ng-click="collectAdd(item.artist, item.album, item.url)">Add to Collection</button>            			
+            			<button class="btn btn-success" ng-click="wishRemove(item.artist, item.album)">REMOVE</button>
+            		</div>
+            	</li>
+            </ul>
+            <a class="left carousel-control" href="#browse-carousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#browse-carousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+            </div>
 		</div>
 	</section>
 </section>
