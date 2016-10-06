@@ -51,7 +51,14 @@ var friendSchema = new mongoose.Schema({
 	friendname: String
 }, {collection: 'friendlist'});
 
+var profileSchema = new mongoose.Schema({
+	username: String,
+	bio: String,
+	genres: 'String'
+}, {collection: 'profile'});
+
 mongoose.model('User', userSchema);
 mongoose.model('Wishlist', wishlistSchema);
 mongoose.model('Collection', collectionSchema);
 mongoose.model('Friendlist', friendSchema);
+mongoose.model('Profile', profileSchema);
