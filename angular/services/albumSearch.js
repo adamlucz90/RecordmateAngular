@@ -36,7 +36,7 @@ angular.
 				 			}
 				 			else{	
 		            			//run the album search function to then fill in the rest of the info
-		            			albumSearch(data.track.album.artist, data.track.album.title, format);			 			
+		            			albumSet(data.track.album.artist, data.track.album.title, format);			 			
 				 			}
 				 		});
 				};
@@ -52,7 +52,6 @@ angular.
 				};
 	
 				function ebaySet(artist, album, format){
-					console.log("ebayset", format);
 					if (format === undefined)
 						var keyword = artist + " " + album;
 	    			else

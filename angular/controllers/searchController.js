@@ -8,13 +8,13 @@ angular.
 		$scope.albumSearch =  function(){
 			var artist = $scope.searchAlbum.artist;
 			var album = $scope.searchAlbum.album;
-			var format = Object.keys($scope.albumFormat);
-			console.log(format);
+			var format = $scope.albumFormat;
+
 			Search.albumSet(artist, album, format);
 		};
 		
 		$scope.songSearch = function(){
-			var format = Object.keys($scope.songFormat);
+			var format = $scope.songFormat;
 			
 			Search.songSet($scope.searchSong.artist, $scope.searchSong.track, format);
 
