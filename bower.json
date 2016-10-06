@@ -14,6 +14,8 @@
     "angular-route": "1.5.x",
     "ng-notifications-bar": "0.0.16",
     "bootstrap": "3.3.x",
-    "jquery": "2.2.x"
+    "jquery": "2.2.x",
+    "angular-touch": "^1.5.8",
+    "angular-bootstrap": "^2.1.4"
   }
 }
