@@ -56,10 +56,6 @@ angular.
 						var keyword = artist + " " + album;
 	    			else
 	        			var keyword = artist + " " + album + " " + format;
-	        			
-	        		var config = {crossDomain: true,
-	   								dataType: 'script',
-	        		};
 	 				
 	 				var url = encodeURI("https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=AdamLucz-RecordMa-PRD-b2f871c7c-e630c56d&GLOBAL-ID=EBAY-US&RESPONSE-DATA-FORMAT=JSON&callback=JSON_CALLBACK&REST-PAYLOAD&keywords=" + keyword + "&responseencoding=JSON&paginationInput.entriesPerPage=5");
 					return $http.jsonp(url)
