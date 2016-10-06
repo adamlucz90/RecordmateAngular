@@ -52,6 +52,7 @@ angular.
 				};
 	
 				function ebaySet(artist, album, format){
+					console.log("ebayset", format);
 					if (format === undefined)
 						var keyword = artist + " " + album;
 	    			else
