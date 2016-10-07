@@ -1,5 +1,5 @@
 <navigationbar></navigationbar>
-<section>
+<section id="profile">
 	<section id="user-profile" class="col-xs-7">
 		<div>
 			<h1>{{user}}'s Profile</h1>
@@ -24,16 +24,29 @@
 		</div>
 	</section>
 	<section id="lists" class="col-xs-5">
-		<div>
+		<h1>{{user}}'s Wishlist</h1>
+		<div id="carousel">
 			<div uib-carousel interval="interval" active="active">
-				<div uib-slide ng-repeat="item in items track by item.id" index="item.id">
-					<img ng-src="{{item.url}}" style="margin:auto;"/>
+				<div uib-slide ng-repeat="item in wishItems track by item.id" index="item.id">
+					<img ng-src="{{item.url}}" id="carouselImg"/>				
 					<div class="carousel-caption">
 						<h4>{{item.artist}}</h4>
 						<h4>{{item.album}}</h4>
-					</div>
+					</div>				
 				</div>
 			</div>
 		</div>
+		<h1>{{user}}'s Collection</h1>
+		<div id="carousel">
+			<div uib-carousel interval="interval" active="active">
+				<div uib-slide ng-repeat="colItem in collectItems track by colItem.id" index="colItem.id">
+					<img ng-src="{{colItem.url}}" id="carouselImg"/>
+					<div class="carousel-caption">
+						<h4>{{colItem.artist}}</h4>
+						<h4>{{colItem.album}}</h4>
+					</div>					
+				</div>
+			</div>
+		</div>		
 	</section>
 </section>

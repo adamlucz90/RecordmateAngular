@@ -20,36 +20,73 @@ angular.
 			
 			$scope.active = 0;
 			
-			$scope.index = 0;
+			$scope.wishIndex = 0;
+			$scope.collIndex = 0;
 			
 			//create variable to hold wishlist items
-			$scope.items = [];
+			$scope.wishItems = [];
+			$scope.collectItems = [];
 			
 			//render the wishlist
 			var wishRender = function(){
 					collection.wishlistRender($scope.user).success(function(data){
 					//if there are items fill wishlist, if not show empty wishlist message
 					if(data.items[0]){
-						$scope.items = data.items.map(function(obj){
+						$scope.wishItems = data.items.map(function(obj){
 							var item = {
 								artist: obj.artist,
 								album: obj.album,
 								url: obj.url,
-								id: $scope.index
+								id: $scope.wishIndex
 							};
 							
-							$scope.index++;
+							$scope.wishIndex++;
 							
 							return item;
 						});
-						console.log($scope.items);
 					}
 					else{
-						$scope.empty = true;
+						$scope.wishItems.push({
+							artist: "Nothing In Wishlist",
+							album: "",
+							url: "/nocover.jpg",
+							id: $scope.wishIndex
+						});
 					}
 				});
-		};	
-		
-		wishRender();			
+			};	
+
+
+			//render the collection
+			var collectionRender = function(){
+					collection.collectionRender($scope.user).success(function(data){
+					//if there are items fill wishlist, if not show empty wishlist message
+					if(data.items[0]){
+						$scope.collectItems = data.items.map(function(obj){
+							var item = {
+								artist: obj.artist,
+								album: obj.album,
+								url: obj.url,
+								id: $scope.collIndex
+							};
+							
+							$scope.collIndex++;
+							
+							return item;
+						});
+					}
+					else{
+						$scope.collectItems.push({
+							artist: "Nothing In Collection",
+							album: "",
+							url: "/nocover.jpg",
+							id: $scope.collIndex
+						});
+					}
+				});
+			};		
+				
+			wishRender();	
+			collectionRender();		
 		}]);
 	
