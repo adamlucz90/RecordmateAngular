@@ -25,9 +25,9 @@
 	</section>
 	<section id="lists" class="col-xs-5">
 		<div>
-			<div uib-carousel interval="interval" no-wrap="noWrapSlides">
-				<div uib-slide ng-repeat="item in items" active="active">
-					<img ng-src="{{item.url}}"/>
+			<div uib-carousel interval="interval" active="active">
+				<div uib-slide ng-repeat="item in items track by item.id" index="item.id">
+					<img ng-src="{{item.url}}" style="margin:auto;"/>
 					<div class="carousel-caption">
 						<h4>{{item.artist}}</h4>
 						<h4>{{item.album}}</h4>
