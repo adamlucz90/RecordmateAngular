@@ -1,7 +1,7 @@
 angular.
 	module("recordmate").
-	controller("profileController", ['$scope', '$location', 'userAuth', 'collection',
-		function($scope, $location, userAuth, collection){
+	controller("profileController", ['$scope', '$location', 'userAuth', 'collection', 'Profile',
+		function($scope, $location, userAuth, collection, Profile){
 			
 			$scope.user = userAuth.getUser().name;
 			
@@ -15,11 +15,10 @@ angular.
 								console.log($scope.bioInput);
 								$scope.bioEditMode = false;
 							};
-							
+			
+			//define the variables required for the carousels				
 			$scope.interval = 5000;
-			
 			$scope.active = 0;
-			
 			$scope.wishIndex = 0;
 			$scope.collIndex = 0;
 			
@@ -27,7 +26,7 @@ angular.
 			$scope.wishItems = [];
 			$scope.collectItems = [];
 			
-			//render the wishlist
+			//render the wishlist carousel
 			var wishRender = function(){
 					collection.wishlistRender($scope.user).success(function(data){
 					//if there are items fill wishlist, if not show empty wishlist message
@@ -57,7 +56,7 @@ angular.
 			};	
 
 
-			//render the collection
+			//render the collection carousel
 			var collectionRender = function(){
 					collection.collectionRender($scope.user).success(function(data){
 					//if there are items fill wishlist, if not show empty wishlist message
@@ -84,9 +83,8 @@ angular.
 						});
 					}
 				});
-			};		
-				
+			};
+								
 			wishRender();	
 			collectionRender();		
-		}]);
-	
+		}]);	

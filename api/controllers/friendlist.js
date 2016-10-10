@@ -8,20 +8,20 @@ var sendJSONresponse = function(res, status, content) {
 
 module.exports.friendlistAdd = function(req, res){
 	
-	friend.findOne({username: req.body.username, friendname: req.body.friendname}, function(err, friendItem){
+	friend.findOne({username: req.params.username, friendname: req.body.friendname}, function(err, friendItem){
 		if(err){
 			return res.status(500);
 		}
 		
-		if(wishItem){
+		if(friendItem){
 			res.status(200).json({
 				"notAdded": "true"
 			});	
 		}
 		else{
 			friend.create({
-				username: req.body.username,
-				friendname: req.body.friend,
+				username: req.params.username,
+				friendname: req.body.friendname,
 			}, function(err, item){
 				if(err){
 					res.status(500);
@@ -36,7 +36,7 @@ module.exports.friendlistAdd = function(req, res){
 
 module.exports.friendlistRemove = function(req, res){
 	
-	friend.findOneAndRemove({username: req.body.username, friendname: req.body.friendname}, function(err, item, result){
+	friend.findOneAndRemove({username: req.params.username, friendname: req.params.friendname}, function(err, item, result){
 		if(err){
 			return res.status(500);
 		}
@@ -48,7 +48,7 @@ module.exports.friendlistRemove = function(req, res){
 
 module.exports.friendlistRender = function(req, res){
 
-	friend.find({username: req.body.user}).lean().exec(function(err, items){
+	friend.find({username: req.params.user}).lean().exec(function(err, items){
 		if(err){
 			return res.status(500);
 		}

@@ -74,6 +74,17 @@ angular
 	      		});
 	      	};
 	      	
+	      	var userProfile = "";
+	      	
+	      	var profile = function(user){
+	      		userProfile = user;
+	      	};
+	      	
+	      	var profileSearch = function(){
+	      		return userProfile;
+	      	}
+	      	
+	      	
 	      	return {
 	      		saveToken: saveToken,
 	      		getToken: getToken,
@@ -81,6 +92,8 @@ angular
 	      		isLogged: isLogged,
 	      		getUser: getUser,
 	      		register: register,
-	      		login: login
+	      		login: login,
+	      		profile: profile,
+	      		profileSearch: userProfile
 	      	};
 	}]);

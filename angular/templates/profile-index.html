@@ -1,6 +1,6 @@
 <navigationbar></navigationbar>
 <section id="profile">
-	<section id="user-profile" class="col-xs-7">
+	<section id="user-profile" class="col-xs-6">
 		<div>
 			<h1>{{user}}'s Profile</h1>
 			<img/>
@@ -20,11 +20,16 @@
 			</form>
 		</div>
 		<div>
-			<p>friendlist</p>
+			<h3>friendlist</h3>
+			<ul style="list-style-type:none">
+				<li ng-repeat="friend in friends">
+					<h5><a href="">{{friend.name}}</a></h5>
+				</li>
+			</ul>
 		</div>
 	</section>
-	<section id="lists" class="col-xs-5">
-		<h1>{{user}}'s Wishlist</h1>
+	<section id="lists" class="col-xs-6">
+		<h2>{{user}}'s Wishlist</h2>
 		<div id="carousel">
 			<div uib-carousel interval="interval" active="active">
 				<div uib-slide ng-repeat="item in wishItems track by item.id" index="item.id">
@@ -36,7 +41,7 @@
 				</div>
 			</div>
 		</div>
-		<h1>{{user}}'s Collection</h1>
+		<h2>{{user}}'s Collection</h2>
 		<div id="carousel">
 			<div uib-carousel interval="interval" active="active">
 				<div uib-slide ng-repeat="colItem in collectItems track by colItem.id" index="colItem.id">

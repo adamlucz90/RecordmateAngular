@@ -10,11 +10,16 @@ var ctrlAuth = require('../controllers/authenticate');
 var ctrlWishlist = require('../controllers/wishlist');
 var ctrlCollection = require('../controllers/collection');
 var ctrlFriend = require('../controllers/friendlist');
+var ctrlBio = require('../controllers/profile');
+
+//profile
+router.post('/user/:username/bio', ctrlBio.bioUpdate);
+router.get('/user/:username/bio', ctrlBio.bioRender);
 
 //friendlist
-router.post('/friendlistAdd', ctrlFriend.friendlistAdd);
-router.delete('/friendlistRemove', ctrlFriend.friendlistRemove);
-router.get('/friendlistRender', ctrlFriend.friendlistRender);
+router.post('/user/:username/friendlist', ctrlFriend.friendlistAdd);
+router.delete('/user/:username/friendlist/friend/:friendname', ctrlFriend.friendlistRemove);
+router.get('/user/:username/friendlist', ctrlFriend.friendlistRender);
 
 // wishlist
 router.post('/user/:username/wishlist', ctrlWishlist.wishlistAdd);
