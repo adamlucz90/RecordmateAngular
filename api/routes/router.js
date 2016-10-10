@@ -16,6 +16,7 @@ var ctrlBio = require('../controllers/profile');
 router.post('/user/:username/bio', ctrlBio.bioUpdate);
 router.get('/user/:username/bio', ctrlBio.bioRender);
 
+
 //friendlist
 router.post('/user/:username/friendlist', ctrlFriend.friendlistAdd);
 router.delete('/user/:username/friendlist/friend/:friendname', ctrlFriend.friendlistRemove);
@@ -34,5 +35,6 @@ router.get('/user/:username/collection', ctrlCollection.collectionRender);
 // authentication
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
+router.get('/user/:username', ctrlAuth.searchUser);
 
 module.exports = router;

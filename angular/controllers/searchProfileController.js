@@ -1,24 +1,16 @@
 angular.
 	module("recordmate").
-	controller("profileController", ['$scope', '$location', 'userAuth', 'collection', 'Profile',
+	controller("searchProfileController", ['$scope', '$location', 'userAuth', 'collection', 'Profile',
 		function($scope, $location, userAuth, collection, Profile){
 			
-			$scope.user = userAuth.getUser().name;
+			$scope.user = userAuth.searchUserGet();
 			
-			$scope.bioEditMode = false;
+			$scope.loggedIn = userAuth.isLogged();
 			
 			$scope.bio = Profile.bioRender($scope.user).success(function(data){
 				console.log(data);
 			})
 			
-			$scope.bioEdit = function(){
-								$scope.bioEditMode = true;
-							};
-			
-			$scope.bioSumbit = function(){
-								console.log($scope.bioInput);
-								$scope.bioEditMode = false;
-							};
 			
 			//define the variables required for the carousels				
 			$scope.interval = 5000;
@@ -91,4 +83,4 @@ angular.
 								
 			wishRender();	
 			collectionRender();		
-		}]);	
+		}]);

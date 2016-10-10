@@ -12,15 +12,8 @@ angular
 				$scope.loggedIn = false;
 			};
 			
-			var currUser = "";
-			
-			if($scope.loggedIn){
-				currUser = userAuth.getUser().name;
-			}
-			
-			$scope.profile = function(){
-				userAuth.profile(currUser);
-				$location.path('/profile');
+			$scope.userSearch = function(){
+				userAuth.userSearch($scope.searchUser);
 			}
 		
 	}])

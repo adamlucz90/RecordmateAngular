@@ -54,7 +54,7 @@ var friendSchema = new mongoose.Schema({
 var profileSchema = new mongoose.Schema({
 	username: String,
 	bio: String,
-	genres: 'String'
+	genres: String
 }, {collection: 'profile'});
 
 mongoose.model('User', userSchema);

@@ -1,0 +1,47 @@
+<navigationbar></navigationbar>
+<section id="profile">
+	<section id="user-profile" class="col-xs-6">
+		<div>
+			<h1>{{user}}'s Profile</h1>
+			<img/>
+			<button ng-show="loggedIn" class="btn btn-success" ng-click="addFriend()" type="button">Add {{user}} As A Friend!</button>
+		</div>
+		<div>
+			<p>BIO</p>
+		</div>
+		<div>
+			<h3>friendlist</h3>
+			<ul style="list-style-type:none">
+				<li ng-repeat="friend in friends">
+					<h5><a href="">{{friend.name}}</a></h5>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<section id="lists" class="col-xs-6">
+		<h2>{{user}}'s Wishlist</h2>
+		<div id="carousel">
+			<div uib-carousel interval="interval" active="active">
+				<div uib-slide ng-repeat="item in wishItems track by item.id" index="item.id">
+					<img ng-src="{{item.url}}" id="carouselImg"/>				
+					<div class="carousel-caption">
+						<h4>{{item.artist}}</h4>
+						<h4>{{item.album}}</h4>
+					</div>				
+				</div>
+			</div>
+		</div>
+		<h2>{{user}}'s Collection</h2>
+		<div id="carousel">
+			<div uib-carousel interval="interval" active="active">
+				<div uib-slide ng-repeat="colItem in collectItems track by colItem.id" index="colItem.id">
+					<img ng-src="{{colItem.url}}" id="carouselImg"/>
+					<div class="carousel-caption">
+						<h4>{{colItem.artist}}</h4>
+						<h4>{{colItem.album}}</h4>
+					</div>					
+				</div>
+			</div>
+		</div>		
+	</section>
+</section>

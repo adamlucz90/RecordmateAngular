@@ -70,3 +70,26 @@ module.exports.login = function(req, res) {
 	  })(req, res);
 
 };
+
+module.exports.searchUser = function(req, res){
+	//Allows user input that's not case sensitive
+	var username = req.params.username.toLowerCase();	
+	
+	User.findOne({name: username}, function(err, user){
+		if(err){
+			return res.status(500);
+		}
+
+		if(user){
+			res.status(200).json({
+				"user": user.name
+			});
+		}
+		else{
+			res.status(200).json({
+				"noUser": "User Doesn't Exist"
+			})		
+		}
+	});	
+		
+};

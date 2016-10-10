@@ -1,7 +1,9 @@
 angular
 	.module("recordmate")
-	.service("userAuth", ['$http', '$window', '$location', 
-		function($http, $window, $location){
+	.service("userAuth", ['$http', '$window', '$location', 'notifications',
+		function($http, $window, $location, notifications){
+			//creates variable to hold username for search
+			var searchedUser = "";
 		
 			//saves the jwt to local storage variable
 			var saveToken = function(token){
@@ -74,15 +76,26 @@ angular
 	      		});
 	      	};
 	      	
-	      	var userProfile = "";
-	      	
-	      	var profile = function(user){
-	      		userProfile = user;
+	      	var userSearch = function(user){
+				var username = encodeURIComponent(user);
+				
+				var url = '/api/user/:username'
+				  .replace(':username', username);	
+				  	      		
+	      		return $http.get(url).success(function(data){
+	      			if(data.noUser){
+	      				notifications.showError({message: data.noUser});
+	      			}
+	      			else{
+	      				searchedUser = data.user;
+	      				$location.path('/userProfile');
+	      			}
+	      		});
 	      	};
 	      	
-	      	var profileSearch = function(){
-	      		return userProfile;
-	      	}
+	      	var searchedUserGet = function(){
+	      		return searchedUser;
+	      	};
 	      	
 	      	
 	      	return {
@@ -93,7 +106,7 @@ angular
 	      		getUser: getUser,
 	      		register: register,
 	      		login: login,
-	      		profile: profile,
-	      		profileSearch: userProfile
+	      		userSearch: userSearch,
+	      		searchUserGet: searchedUserGet
 	      	};
 	}]);

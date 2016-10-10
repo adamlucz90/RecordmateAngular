@@ -53,6 +53,11 @@ angular.
         	controller: 'profileController',
         	controllerAs: 'profileCtrl'
         }).
+        when('/userProfile', {
+        	tempateUrl: '/templates/usersearch-index.html',
+        	controller: 'searchProfileController',
+        	controllerAs: 'searchProfileCtrl'
+        }).
         otherwise({redirectTo: '/search'});
 
     }
