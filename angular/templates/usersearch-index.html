@@ -4,16 +4,24 @@
 		<div>
 			<h1>{{user}}'s Profile</h1>
 			<img/>
-			<button ng-show="loggedIn" class="btn btn-success" ng-click="addFriend()" type="button">Add {{user}} As A Friend!</button>
+			<button ng-show="!areFriends" class="btn btn-success" ng-click="addFriend()" type="button">Add {{user}} As A Friend!</button>
+			<button ng-show="areFriends" class="btn btn-danger" ng-click="removeFriend()" type="button">Unfriend {{user}}</button>			
 		</div>
 		<div>
-			<p>BIO</p>
+			<p ng-show="noBio">{{user}} hasn't created a bio!</p>
+			<p ng-show="!noBio">{{bio}}</p>
+		</div>
+		<div>
+			<h3>{{user}}'s Favorite Bands</h3>
+			<p ng-show="noBands">{{user}} hasn't added any bands yet!</p>
+			<p ng-show="!noBands">{{bands}}</p>
 		</div>
 		<div>
 			<h3>friendlist</h3>
 			<ul style="list-style-type:none">
+			<h4 ng-show="emptyFriend">{{user}} has no friends :(</h4>
 				<li ng-repeat="friend in friends">
-					<h5><a href="">{{friend.name}}</a></h5>
+					<h4><a href="" ng-click="friendSearch(friend.name)">{{friend.name}}</a></h4>
 				</li>
 			</ul>
 		</div>

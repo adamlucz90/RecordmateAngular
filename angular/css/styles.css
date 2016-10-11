@@ -266,6 +266,19 @@ footer {
   text-align:left;
 }
 
+#profile a {
+	padding: 0px 0px 0px 2px;
+}
+
+#profile ul {
+	padding: 0px 0px 0px 2px;
+}
+
+#profile li {
+	float: left;
+	display: inline;
+}
+
 /*#slides_control {
   position:absolute;
   width: 400px;

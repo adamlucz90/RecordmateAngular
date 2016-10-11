@@ -6,25 +6,30 @@
 			<img/>
 		</div>
 		<div>
-			<p ng-show="!bioEditMode">BIO</p>
-			<a ng-show="!bioEditMode" ng-click="bioEdit()">edit</a>
-			<form ng-show="bioEditMode" id="user-bio" ng-submit="bioSubmit()" novalidate>
-				<fieldset>
-					<div class="form-group">
-						<textarea ng-model="bioInput" rows="6" cols="50" form="user-bio"></textarea>
-					</div>
-					<div class="form-group">
-						<input type="submit" id="submit" class="btn btn-success" value="Submit!"/>
-					</div>
-				</fieldset>
-			</form>
+			<p ng-show="noBio">Tell us about yourself!</p>
+			<p ng-show="!bioEditMode && !noBio">{{bio}}</p>
+			<a ng-show="!bioEditMode" href="" ng-click="bioEdit()">edit</a>
+			<div ng-show="bioEditMode" >
+				<textarea ng-model="bioInput" rows="6" cols="50"></textarea>
+				</br>
+				<input type="button" id="submit" class="btn btn-success" ng-click="bioSubmit()" value="Submit!"/>
+			</div>
+			<h3>{{user}}'s Favorite Bands</h3>
+			<p ng-show="noBands">List your favorite bands!</p>
+			<p ng-show="!bandEditMode && !noBands">{{bands}}</p>
+			<a ng-show="!bandEditMode" href="" ng-click="bandEdit()">edit</a>
+			<div ng-show="bandEditMode" >
+				<textarea ng-model="bandInput" rows="6" cols="50"></textarea>
+				</br>
+				<input type="button" id="submit" class="btn btn-success" ng-click="bandSubmit()" value="Submit!"/>
+			</div>			
 		</div>
 		<div>
 			<h3>friendlist</h3>
 			<ul style="list-style-type:none">
 				<h4 ng-show="emptyFriend">Get friendly and add some friends!</h4>
 				<li ng-repeat="friend in friends">
-					<h5><a href="">{{friend.name}}</a></h5>
+					<h4><a href="" ng-click="friendSearch(friend.friendname)">{{friend.friendname}}</a></h4>
 				</li>
 			</ul>
 		</div>

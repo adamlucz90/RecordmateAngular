@@ -15,12 +15,14 @@ var ctrlBio = require('../controllers/profile');
 //profile
 router.post('/user/:username/bio', ctrlBio.bioUpdate);
 router.get('/user/:username/bio', ctrlBio.bioRender);
-
+router.post('/user/:username/bands', ctrlBio.bandUpdate);
+router.get('/user/:username/bands', ctrlBio.bandRender);
 
 //friendlist
 router.post('/user/:username/friendlist', ctrlFriend.friendlistAdd);
 router.delete('/user/:username/friendlist/friend/:friendname', ctrlFriend.friendlistRemove);
 router.get('/user/:username/friendlist', ctrlFriend.friendlistRender);
+router.get('/user/:username/friendlist/friend/:friendname', ctrlFriend.areFriends);
 
 // wishlist
 router.post('/user/:username/wishlist', ctrlWishlist.wishlistAdd);

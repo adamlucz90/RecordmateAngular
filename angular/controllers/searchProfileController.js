@@ -5,12 +5,28 @@ angular.
 			
 			$scope.user = userAuth.searchUserGet();
 			
+			if(!$scope.user){
+				$location.path('/search');
+			}
+			
 			$scope.loggedIn = userAuth.isLogged();
 			
-			$scope.bio = Profile.bioRender($scope.user).success(function(data){
-				console.log(data);
-			})
-			
+			if($scope.loggedIn){
+				var currUser = userAuth.getUser().name;
+				
+				if($scope.user == currUser){
+					$location.path('/profile');
+				}
+				
+				Profile.areFriends(currUser, $scope.user).success(function(data){
+					if(data.areFriends){
+						$scope.areFriends = true;
+					}
+					else{
+						$scope.areFriends = false;
+					}
+				});
+			}
 			
 			//define the variables required for the carousels				
 			$scope.interval = 5000;
@@ -81,6 +97,85 @@ angular.
 				});
 			};
 								
+			var friendRender = function(){
+				Profile.friendRender($scope.user).success(function(data){
+					//if there are friends fill friendslist, if not show empty friendslist message
+					if(data.friends[0]){
+						$scope.friends = data.friends;
+					}
+					else{
+						$scope.emptyFriend = true;
+						$scope.friends = [];
+					}
+				});
+			};
+			
+			$scope.friendSearch = function(user){
+				userAuth.userSearch(user);
+			};
+			
+			$scope.addFriend = function(){
+				var item = {
+					username: currUser,
+					friendname: $scope.user
+				};
+				
+				Profile.friendAdd(item).then(function(){
+					Profile.areFriends(currUser, $scope.user).success(function(data){
+						if(data.areFriends){
+							$scope.areFriends = true;
+						}
+						else{
+							$scope.areFriends = false;
+						}
+					});
+				});
+			};
+
+			$scope.removeFriend = function(){
+				var item = {
+					username: currUser,
+					friendname: $scope.user
+				};
+
+				Profile.friendRemove(item).then(function(){
+					Profile.areFriends(currUser, $scope.user).success(function(data){
+						if(data.areFriends){
+							$scope.areFriends = true;
+						}
+						else{
+							$scope.areFriends = false;
+						}
+					});
+				});
+			};
+			
+			var bioRender = function(){
+				Profile.bioRender($scope.user).success(function(data){
+					if(data.item[0]){
+						$scope.bio = data.item[0].bio;
+					}
+					else{
+						$scope.noBio = true;
+					}
+				});
+			}
+										
+			var bandRender = function(){
+				Profile.bandRender($scope.user).success(function(data){
+					if(data.item[0]){
+						$scope.bands = data.item[0].bands;
+						$scope.bandInput = data.item[0].bands;
+					}
+					else{
+						$scope.noBands = true;
+					}
+				});
+			}		
+			
+			bandRender();				
+			bioRender();								
 			wishRender();	
-			collectionRender();		
+			collectionRender();
+			friendRender();		
 		}]);

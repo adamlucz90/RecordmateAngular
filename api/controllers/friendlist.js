@@ -48,13 +48,32 @@ module.exports.friendlistRemove = function(req, res){
 
 module.exports.friendlistRender = function(req, res){
 
-	friend.find({username: req.params.user}).lean().exec(function(err, friends){
+	friend.find({username: req.params.username}).lean().exec(function(err, friends){
 		if(err){
 			return res.status(500);
 		}
-		
+
 		//send back ok status and the wishlist items
 		res.status(200).json({friends});
 		
 	});
+};
+
+module.exports.areFriends = function(req, res){
+	friend.findOne({username: req.params.username, friendname: req.params.friendname}, function(err, friendItem){
+		if(err){
+			return res.status(500);
+		}
+
+		if(friendItem){
+			res.status(200).json({
+				"areFriends": "true"
+			});	
+		}
+		else{
+			res.status(200).json({
+				"notFriends": "true"
+			});
+		}	
+	});		
 };

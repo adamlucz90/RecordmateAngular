@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var profile = mongoose.model('Profile');
+var bio = mongoose.model('Bio');
+var band = mongoose.model('Bands');
 
 var sendJSONresponse = function(res, status, content) {
   res.status(status);
@@ -7,27 +8,26 @@ var sendJSONresponse = function(res, status, content) {
 };
 
 module.exports.bioUpdate = function(req, res){
-	profile.findOne({username: req.params.username, bio: req.body.bio}, function(err, profileItem){
+	bio.findOneAndUpdate({username: req.params.username}, {bio: req.body.bio}, function(err, bioItem){
 		if(err){
 			return res.status(500);
 		}
 		
-		if(profileItem){
+		if(bioItem){
 			res.status(200).json({
-				"notAdded": "true"
+				"updated": "true"
 			});	
 		}
 		else{
-			profile.create({
+			bio.create({
 				username: req.params.username,
-				bio: req.body.friendname,
-				genres: ""
+				bio: req.body.bio
 			}, function(err, item){
 				if(err){
 					res.status(500);
 				}
 				res.status(200).json({
-					"added": "true"
+					"updated": "true"
 				});
 			});
 		}		
@@ -35,7 +35,7 @@ module.exports.bioUpdate = function(req, res){
 };
 
 module.exports.bioRender = function(req, res){
-	profile.find({username: req.params.username}).lean().exec(function(err, item){
+	bio.find({username: req.params.username}).lean().exec(function(err, item){
 		if(err){
 			return res.status(500);
 		}
@@ -46,4 +46,42 @@ module.exports.bioRender = function(req, res){
 	});	
 };
 
+module.exports.bandUpdate = function(req, res){
+	band.findOneAndUpdate({username: req.params.username}, {bands: req.body.bands}, function(err, bandItem){
+		if(err){
+			return res.status(500);
+		}
+
+		if(bandItem){
+			res.status(200).json({
+				"updated": "true"
+			});	
+		}
+		else{
+			band.create({
+				username: req.params.username,
+				bands: req.body.bands
+			}, function(err, item){
+				if(err){
+					res.status(500);
+				}
+				res.status(200).json({
+					"updated": "true"
+				});
+			});
+		}		
+	});	
+};
+
+module.exports.bandRender = function(req, res){
+	band.find({username: req.params.username}).lean().exec(function(err, item){
+		if(err){
+			return res.status(500);
+		}
+		
+		//send back ok status and the wishlist items
+		res.status(200).json({item});
+		
+	});	
+};
 

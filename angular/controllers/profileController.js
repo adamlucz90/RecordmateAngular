@@ -1,24 +1,9 @@
 angular.
 	module("recordmate").
-	controller("profileController", ['$scope', '$location', 'userAuth', 'collection', 'Profile',
-		function($scope, $location, userAuth, collection, Profile){
+	controller("profileController", ['$scope', '$location', 'userAuth', 'collection', 'Profile', 'notifications',
+		function($scope, $location, userAuth, collection, Profile, notifications){
 			
 			$scope.user = userAuth.getUser().name;
-			
-			$scope.bioEditMode = false;
-			
-			$scope.bio = Profile.bioRender($scope.user).success(function(data){
-				//console.log(data);
-			})
-			
-			$scope.bioEdit = function(){
-								$scope.bioEditMode = true;
-							};
-			
-			$scope.bioSumbit = function(){
-								console.log($scope.bioInput);
-								$scope.bioEditMode = false;
-							};
 			
 			//define the variables required for the carousels				
 			$scope.interval = 5000;
@@ -101,7 +86,95 @@ angular.
 					}
 				});
 			};
+			
+			$scope.friendSearch = function(user){
+				userAuth.userSearch(user);
+			}
+			
+			$scope.bioEditMode = false;
+			
+			$scope.bioEdit = function(){
+								$scope.bioEditMode = true;
+							};
+			
+			$scope.bioSubmit = function(){
+								var bioItem = {
+									username: $scope.user,
+									bio: $scope.bioInput
+								};
 								
+								Profile.bioUpdate(bioItem).success(function(data){
+									if(data.updated){
+										$scope.noBio = false;								
+										$scope.bioEditMode = false;
+										bioRender();
+									}
+									else{
+										notifications.showError({message: "Whoops! Something went wrong!"});
+									}
+								});
+							};
+										
+			var bioRender = function(){
+				Profile.bioRender($scope.user).success(function(data){
+					if(data.item[0]){
+						if(data.item[0].bio == "" || data.item[0].bio == null){
+							$scope.noBio = true;
+						}
+						else{
+							$scope.bio = data.item[0].bio;
+							$scope.bioInput = data.item[0].bio;
+						}
+					}
+					else{
+						$scope.noBio = true;
+					}
+				});
+			}
+
+			$scope.bandEditMode = false;
+			
+			$scope.bandEdit = function(){
+								$scope.bandEditMode = true;
+							};
+			
+			$scope.bandSubmit = function(){
+								var bandItem = {
+									username: $scope.user,
+									bands: $scope.bandInput
+								};
+								
+								Profile.bandUpdate(bandItem).success(function(data){
+									if(data.updated){	
+										$scope.noBands = false;							
+										$scope.bandEditMode = false;
+										bandRender();
+									}
+									else{
+										notifications.showError({message: "Whoops! Something went wrong!"});
+									}
+								});
+							};
+										
+			var bandRender = function(){
+				Profile.bandRender($scope.user).success(function(data){
+					if(data.item[0]){
+						if(data.item[0].bands == "" || data.item[0].bands == null){
+							$scope.noBands = true;
+						}
+						else{
+							$scope.bands = data.item[0].bands;
+							$scope.bandInput = data.item[0].bands;
+						}
+					}
+					else{
+						$scope.noBands = true;
+					}
+				});
+			}		
+			
+			bandRender();	
+			bioRender();								
 			wishRender();	
 			collectionRender();
 			friendRender();		

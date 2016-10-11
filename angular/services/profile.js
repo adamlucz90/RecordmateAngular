@@ -1,7 +1,7 @@
 angular.
 	module("recordmate").
-	service("Profile", ['$http', 
-		function($http){
+	service("Profile", ['$http', 'notifications', 
+		function($http, notifications){
 			
 			//function to add a friend to a user's friendlist
 			var friendlistAdd = function(item){
@@ -13,10 +13,10 @@ angular.
 				return $http.post(url, item)
 						.success(function(data){
 							if(data.notAdded){
-								notifications.showError({message: "You are already friends with " + item.friendname});
+								notifications.showError({message: "You are already friends with "});
 							}
 							else{
-								notifications.showSuccess({message: "You are now friends with " + item.friendname});
+								notifications.showSuccess({message: "You are now friends with "});
 							}
 						});
 			};
@@ -24,11 +24,11 @@ angular.
 			//function to remove a friend from a user's friendlist
 			var friendlistRemove = function(item){
 				var username = encodeURIComponent(item.username);
-				var friendname = encodeURIComponent(item.friend);				
+				var friendname = encodeURIComponent(item.friendname);				
 				
 				var url = '/api/user/:username/friendlist/friend/:friendname'
 				  .replace(':username', username)
-				  .replace(':friendname', friendname)				
+				  .replace(':friendname', friendname);				
 				
 				return $http.delete(url)
 					.success(function(data){
@@ -40,6 +40,17 @@ angular.
 			var friendlistRender = function(user){
 				const username = encodeURIComponent(user);
 				return $http.get('/api/user/' + username + '/friendlist');
+			};
+			
+			var areFriends = function(username, friendname){
+				var username = encodeURIComponent(username);
+				var friendname = encodeURIComponent(friendname);
+
+				var url = '/api/user/:username/friendlist/friend/:friendname'
+				  .replace(':username', username)
+				  .replace(':friendname', friendname);
+				  
+				return $http.get(url);
 			};
 			
 			//function to retrieve a user's current bio, if any
@@ -58,12 +69,31 @@ angular.
 				return $http.post(url, bioItem);				
 			}
 			
+			//function to retrieve a user's current bio, if any
+			var bandRender = function(user){
+				const username = encodeURIComponent(user);
+				return $http.get('/api/user/' + username + '/bands');
+			};
+			
+			//function to update a user's bio
+			var bandUpdate = function(bandItem){
+				var username = encodeURIComponent(bandItem.username);
+				
+				var url = '/api/user/:username/bands'
+				  .replace(':username', username);					
+				
+				return $http.post(url, bandItem);				
+			}
+			
 			
 			return{
 				friendAdd: friendlistAdd,
 				friendRemove: friendlistRemove,
 				friendRender: friendlistRender,
+				areFriends: areFriends,
 				bioRender: bioRender,
-				bioUpdate: bioUpdate
+				bioUpdate: bioUpdate,
+				bandRender: bandRender,
+				bandUpdate: bandUpdate
 			}			
 		}]);

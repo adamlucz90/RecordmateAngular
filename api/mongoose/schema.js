@@ -51,14 +51,19 @@ var friendSchema = new mongoose.Schema({
 	friendname: String
 }, {collection: 'friendlist'});
 
-var profileSchema = new mongoose.Schema({
+var bioSchema = new mongoose.Schema({
 	username: String,
-	bio: String,
-	genres: String
-}, {collection: 'profile'});
+	bio: String
+}, {collection: 'bio'});
+
+var bandSchema = new mongoose.Schema({
+	username: String,
+	bands: String
+}, {collection: 'bands'});
 
 mongoose.model('User', userSchema);
 mongoose.model('Wishlist', wishlistSchema);
 mongoose.model('Collection', collectionSchema);
 mongoose.model('Friendlist', friendSchema);
-mongoose.model('Profile', profileSchema);
+mongoose.model('Bio', bioSchema);
+mongoose.model('Bands', bandSchema);
