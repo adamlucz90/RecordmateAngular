@@ -54,7 +54,7 @@ angular.
         	controllerAs: 'profileCtrl'
         }).
         when('/userProfile', {
-        	tempateUrl: '/templates/usersearch-index.html',
+        	templateUrl: '/templates/usersearch-index.html',
         	controller: 'searchProfileController',
         	controllerAs: 'searchProfileCtrl'
         }).
