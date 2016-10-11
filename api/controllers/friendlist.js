@@ -48,13 +48,13 @@ module.exports.friendlistRemove = function(req, res){
 
 module.exports.friendlistRender = function(req, res){
 
-	friend.find({username: req.params.user}).lean().exec(function(err, items){
+	friend.find({username: req.params.user}).lean().exec(function(err, friends){
 		if(err){
 			return res.status(500);
 		}
 		
 		//send back ok status and the wishlist items
-		res.status(200).json({items});
+		res.status(200).json({friends});
 		
 	});
 };

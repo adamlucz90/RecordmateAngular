@@ -22,6 +22,7 @@
 		<div>
 			<h3>friendlist</h3>
 			<ul style="list-style-type:none">
+				<h4 ng-show="emptyFriend">Get friendly and add some friends!</h4>
 				<li ng-repeat="friend in friends">
 					<h5><a href="">{{friend.name}}</a></h5>
 				</li>

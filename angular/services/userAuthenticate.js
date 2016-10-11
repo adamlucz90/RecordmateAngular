@@ -93,7 +93,7 @@ angular
 	      		});
 	      	};
 	      	
-	      	var searchedUserGet = function(){
+	      	var searchUserGet = function(){
 	      		return searchedUser;
 	      	};
 	      	
@@ -107,6 +107,6 @@ angular
 	      		register: register,
 	      		login: login,
 	      		userSearch: userSearch,
-	      		searchUserGet: searchedUserGet
+	      		searchUserGet: searchUserGet
 	      	};
 	}]);

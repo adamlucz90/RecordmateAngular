@@ -8,7 +8,7 @@ angular.
 			$scope.bioEditMode = false;
 			
 			$scope.bio = Profile.bioRender($scope.user).success(function(data){
-				console.log(data);
+				//console.log(data);
 			})
 			
 			$scope.bioEdit = function(){
@@ -88,7 +88,21 @@ angular.
 					}
 				});
 			};
+			
+			var friendRender = function(){
+				Profile.friendRender($scope.user).success(function(data){
+					//if there are friends fill friendslist, if not show empty friendslist message
+					if(data.friends[0]){
+						$scope.friends = data.friends;
+					}
+					else{
+						$scope.emptyFriend = true;
+						$scope.friends = [];
+					}
+				});
+			};
 								
 			wishRender();	
-			collectionRender();		
+			collectionRender();
+			friendRender();		
 		}]);	
