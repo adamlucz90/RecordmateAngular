@@ -7,6 +7,10 @@ var userSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	email: {
+		type: String,
+		required: true
+	},
 	hash: String,
 	salt: String	
 });
@@ -28,6 +32,7 @@ userSchema.methods.generateJwt = function() {
   return jwt.sign({
     _id: this._id,
     name: this.name,
+    email: this.email,
     exp: parseInt(expiry.getTime() / 1000),
   }, "MY_SECRET"); // NEEDS TO BE CHANGED
 };

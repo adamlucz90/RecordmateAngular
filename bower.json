@@ -8,6 +8,7 @@
   "dependencies": {
     "angular": "1.5.x",
     "angular-animate": "1.5.x",
+    "angular-gravatar": "^0.4.2",
     "angular-sanitize": "1.5.8",
     "angular-mocks": "1.5.x",
     "angular-resource": "1.5.x",

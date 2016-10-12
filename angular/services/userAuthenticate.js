@@ -59,7 +59,8 @@ angular
 					payload = JSON.parse(payload);		
 					
 					return {
-						name: payload.name
+						name: payload.name,
+						email: payload.email
 					};				
 				}
 			};
@@ -87,7 +88,7 @@ angular
 	      				notifications.showError({message: data.noUser});
 	      			}
 	      			else{
-	      				searchedUser = data.user;
+	      				searchedUser = data;
 	      				$location.path('/userProfile');
 	      			}
 	      		});

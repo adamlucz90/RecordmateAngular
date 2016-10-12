@@ -279,6 +279,9 @@ footer {
 	display: inline;
 }
 
+#profile textarea {
+	color: black;
+}
 /*#slides_control {
   position:absolute;
   width: 400px;

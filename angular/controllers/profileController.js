@@ -5,6 +5,8 @@ angular.
 			
 			$scope.user = userAuth.getUser().name;
 			
+			$scope.email = userAuth.getUser().email;
+
 			//define the variables required for the carousels				
 			$scope.interval = 5000;
 			$scope.active = 0;

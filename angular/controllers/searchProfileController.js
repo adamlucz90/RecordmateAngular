@@ -3,8 +3,10 @@ angular.
 	controller("searchProfileController", ['$scope', '$location', 'userAuth', 'collection', 'Profile',
 		function($scope, $location, userAuth, collection, Profile){
 			
-			$scope.user = userAuth.searchUserGet();
-			
+			$scope.user = userAuth.searchUserGet().user;
+
+			$scope.email = userAuth.searchUserGet().email;
+		
 			if(!$scope.user){
 				$location.path('/search');
 			}

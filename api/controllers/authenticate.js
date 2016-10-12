@@ -11,7 +11,7 @@ module.exports.register = function(req, res) {
 
 	//Allows user input that's not case sensitive
 	var username = req.body.username.toLowerCase();
-
+	var email = req.body.email.toLowerCase();
 
 	
 	//checks to see if username is already taken
@@ -30,6 +30,8 @@ module.exports.register = function(req, res) {
 			  var user = new User();
 			  
 			  user.name = username;
+			  
+			  user.email = email;
 			
 			  user.setPassword(req.body.password);
 			
@@ -79,10 +81,10 @@ module.exports.searchUser = function(req, res){
 		if(err){
 			return res.status(500);
 		}
-
 		if(user){
 			res.status(200).json({
-				"user": user.name
+				"user": user.name,
+				"email": user.email
 			});
 		}
 		else{

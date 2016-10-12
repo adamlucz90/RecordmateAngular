@@ -1,6 +1,6 @@
 <navigationbar></navigationbar>
 <section id="profile">
-	<section id="user-profile" class="col-xs-6">
+	<section id="user-profile" class="col-xs-4">
 		<div>
 			<h1>{{user}}'s Profile</h1>
 			<img/>
@@ -32,6 +32,12 @@
 					<h4><a href="" ng-click="friendSearch(friend.friendname)">{{friend.friendname}}</a></h4>
 				</li>
 			</ul>
+		</div>
+	</section>
+	<section class="col-xs-2">
+		<div>
+			<img gravatar-src="email"/>
+			<p>Edit your profile pic on <a href="https://en.gravatar.com/" target="_blank">Gravatar</a></p>
 		</div>
 	</section>
 	<section id="lists" class="col-xs-6">
