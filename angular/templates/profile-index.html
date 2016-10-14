@@ -1,4 +1,5 @@
 <navigationbar></navigationbar>
+<notifications-bar class="notifications"></notifications-bar>
 <section id="profile">
 	<section id="user-profile" class="col-xs-4">
 		<div>
@@ -16,7 +17,8 @@
 			</div>
 			<h3>{{user}}'s Favorite Bands</h3>
 			<p ng-show="noBands">List your favorite bands!</p>
-			<p ng-show="!bandEditMode && !noBands">{{bands}}</p>
+			<p>Add a band or artist serperated by a comma!</p>			
+			<p ng-show="!bandEditMode && !noBands" ><a ng-repeat="band in bands" href="" ng-click="bandSearch(band)">{{band}} </a></p>
 			<a ng-show="!bandEditMode" href="" ng-click="bandEdit()">edit</a>
 			<div ng-show="bandEditMode" >
 				<textarea ng-model="bandInput" rows="6" cols="50"></textarea>

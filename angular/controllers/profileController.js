@@ -1,7 +1,7 @@
 angular.
 	module("recordmate").
-	controller("profileController", ['$scope', '$location', 'userAuth', 'collection', 'Profile', 'notifications',
-		function($scope, $location, userAuth, collection, Profile, notifications){
+	controller("profileController", ['$scope', '$location', 'userAuth', 'collection', 'Search', 'Profile', 'notifications',
+		function($scope, $location, userAuth, collection, Search, Profile, notifications){
 			
 			$scope.user = userAuth.getUser().name;
 			
@@ -90,15 +90,16 @@ angular.
 			};
 			
 			$scope.friendSearch = function(user){
-				userAuth.userSearch(user).then(function (goToProfile) {
-				    if (goToProfile) {
+				userAuth.userSearch(user).then(function () {
 				    	if($location.path() == '/userProfile'){
 				    		$scope.$broadcast('rerun');
 				    	}
 				    	else{
 				      		$location.path('/userProfile');
 				      	}
-				    }
+
+			  }, function(err){
+			  		 notifications.showError({message: err.message});
 			  });
 			}
 			
@@ -174,7 +175,12 @@ angular.
 							$scope.noBands = true;
 						}
 						else{
-							$scope.bands = data.item[0].bands;
+							$scope.bands = data.item[0].bands.trim().split(',').map(function(b){
+								return b.trim();
+							}).filter(function(b){
+								return b.length;
+							});
+							
 							$scope.bandInput = data.item[0].bands;
 						}
 					}
@@ -182,6 +188,10 @@ angular.
 						$scope.noBands = true;
 					}
 				});
+				
+				$scope.bandSearch = function(band){ 
+					Search.topAlbumSearch(band);
+				};
 			}		
 			
 			bandRender();	

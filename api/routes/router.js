@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('express-jwt');
 var auth = jwt({
-  secret: 'MY_SECRET',
-  userProperty: 'payload'
+	secret : 'MY_SECRET',
+	userProperty : 'payload'
 });
 
 var ctrlAuth = require('../controllers/authenticate');
@@ -39,4 +39,4 @@ router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 router.get('/user/:username', ctrlAuth.searchUser);
 
-module.exports = router;
+module.exports = router; 
