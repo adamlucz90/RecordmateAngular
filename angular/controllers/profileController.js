@@ -90,7 +90,16 @@ angular.
 			};
 			
 			$scope.friendSearch = function(user){
-				userAuth.userSearch(user);
+				userAuth.userSearch(user).then(function (goToProfile) {
+				    if (goToProfile) {
+				    	if($location.path() == '/userProfile'){
+				    		$scope.$broadcast('rerun');
+				    	}
+				    	else{
+				      		$location.path('/userProfile');
+				      	}
+				    }
+			  });
 			}
 			
 			$scope.bioEditMode = false;

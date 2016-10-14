@@ -282,6 +282,10 @@ footer {
 #profile textarea {
 	color: black;
 }
+
+#profile button {
+	margin: 5px 0px 20px 0px;
+}
 /*#slides_control {
   position:absolute;
   width: 400px;

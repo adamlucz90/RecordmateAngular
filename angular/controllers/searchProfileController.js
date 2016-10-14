@@ -106,6 +106,7 @@ angular.
 					//if there are friends fill friendslist, if not show empty friendslist message
 					if(data.friends[0]){
 						$scope.friends = data.friends;
+						$scope.emptyFriend = false;
 					}
 					else{
 						$scope.emptyFriend = true;
@@ -115,7 +116,16 @@ angular.
 			};
 			
 			$scope.friendSearch = function(user){
-				userAuth.userSearch(user);
+				userAuth.userSearch(user).then(function (goToProfile) {
+				    if (goToProfile) {
+				    	if($location.path() == '/userProfile'){
+				    		$scope.$broadcast('rerun');
+				    	}
+				    	else{
+				      		$location.path('/userProfile');
+				      	}
+				    }
+			  });
 			};
 			
 			$scope.addFriend = function(){
