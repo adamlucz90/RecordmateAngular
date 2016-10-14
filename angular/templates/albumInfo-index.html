@@ -15,7 +15,7 @@
            			<li>{{track}}</li>
            		</ul>
 
-           		<p>{{tags}}</p>
+           		<span ng-repeat="tag in tags"><a href="" ng-click="tagSearch(tag)">{{tag}} </a> </span>
 
 
           </div> 	
@@ -46,6 +46,21 @@
             </div>
             <div id="ebay" class="col-xs-6">
                 <h2>eBay Listings</h2>
+                <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                	<tbody>
+                		<tr ng-repeat="item in ebayInfo">
+                			<td>
+                				<img ng-src="{{item.galleryURL[0]}}" border="0"/>
+                			</td>
+                			<td>
+                				<a ng-href="{{item.viewItemURL[0]}}" target="_blank">{{item.title[0]}}</a>
+                			</td>
+                			<td>
+                				<h4>{{item.sellingStatus[0].currentPrice[0]["__value__"]}} {{item.sellingStatus[0].currentPrice[0]["@currencyId"]}}</h4>
+                			</td>
+                		</tr>
+                	</tbody>
+                </table>
             </div>
         </section>
     </section> 

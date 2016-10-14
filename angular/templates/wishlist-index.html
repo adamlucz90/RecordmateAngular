@@ -13,7 +13,7 @@
             		<div class="panel-body">
             			<img ng-src="{{item.url}}" class="img-responsive" href=" " ng-click="albumSearch(item.artist, item.album)"/>
             			<button class="btn btn-success" ng-click="collectAdd(item.artist, item.album, item.url)">Add to Collection</button>            			
-            			<button class="btn btn-success" ng-click="wishRemove(item.artist, item.album)">REMOVE</button>
+            			<button class="btn btn-danger" ng-click="wishRemove(item.artist, item.album)">REMOVE</button>
             		</div>
             	</li>
             </ul>

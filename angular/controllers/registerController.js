@@ -7,6 +7,7 @@ angular.
 			
 			$scope.user = {
 				username: "",
+				email: "",
 				password: ""
 			};
 			
@@ -20,7 +21,6 @@ angular.
 				userAuth
 					.register($scope.user)
 					.success(function(data){
-						console.log(data);
 		      			if(data.user){
 		      				//if the username already exists, display error
 		      				notifications.showError({message: "Username Already Exists."});

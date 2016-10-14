@@ -8,12 +8,15 @@
   "dependencies": {
     "angular": "1.5.x",
     "angular-animate": "1.5.x",
+    "angular-gravatar": "^0.4.2",
     "angular-sanitize": "1.5.8",
     "angular-mocks": "1.5.x",
     "angular-resource": "1.5.x",
     "angular-route": "1.5.x",
     "ng-notifications-bar": "0.0.16",
     "bootstrap": "3.3.x",
-    "jquery": "2.2.x"
+    "jquery": "2.2.x",
+    "angular-touch": "^1.5.8",
+    "angular-bootstrap": "^2.1.4"
   }
 }

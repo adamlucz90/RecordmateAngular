@@ -4,30 +4,22 @@
 		<div>
 			<h1>{{user}}'s Profile</h1>
 			<img/>
+			<button ng-show="!areFriends && loggedIn" class="btn btn-success" ng-click="addFriend()" type="button">Add {{user}} As A Friend!</button>
+			<button ng-show="areFriends && loggedIn" class="btn btn-danger" ng-click="removeFriend()" type="button">Unfriend {{user}}</button>			
 		</div>
 		<div>
-			<p ng-show="noBio">Tell us about yourself!</p>
-			<p ng-show="!bioEditMode && !noBio">{{bio}}</p>
-			<a ng-show="!bioEditMode" href="" ng-click="bioEdit()">edit</a>
-			<div ng-show="bioEditMode" >
-				<textarea ng-model="bioInput" rows="6" cols="50"></textarea>
-				</br>
-				<input type="button" id="submit" class="btn btn-success" ng-click="bioSubmit()" value="Submit!"/>
-			</div>
+			<p ng-show="noBio">{{user}} hasn't created a bio!</p>
+			<p ng-show="!noBio">{{bio}}</p>
+		</div>
+		<div>
 			<h3>{{user}}'s Favorite Bands</h3>
-			<p ng-show="noBands">List your favorite bands!</p>
-			<p ng-show="!bandEditMode && !noBands">{{bands}}</p>
-			<a ng-show="!bandEditMode" href="" ng-click="bandEdit()">edit</a>
-			<div ng-show="bandEditMode" >
-				<textarea ng-model="bandInput" rows="6" cols="50"></textarea>
-				</br>
-				<input type="button" id="submit" class="btn btn-success" ng-click="bandSubmit()" value="Submit!"/>
-			</div>			
+			<p ng-show="noBands">{{user}} hasn't added any bands yet!</p>
+			<p ng-show="!noBands">{{bands}}</p>
 		</div>
 		<div>
 			<h3>friendlist</h3>
 			<ul style="list-style-type:none">
-				<h4 ng-show="emptyFriend">Get friendly and add some friends!</h4>
+			<h4 ng-show="emptyFriend">{{user}} has no friends :(</h4>
 				<li ng-repeat="friend in friends">
 					<h4><a href="" ng-click="friendSearch(friend.friendname)">{{friend.friendname}}</a></h4>
 				</li>
@@ -37,9 +29,9 @@
 	<section class="col-xs-2">
 		<div>
 			<img gravatar-src="email"/>
-			<p>Edit your profile pic on <a href="https://en.gravatar.com/" target="_blank">Gravatar</a></p>
+			<p>Powered by <a href="https://en.gravatar.com/" target="_blank">Gravatar</a></p>			
 		</div>
-	</section>
+	</section>	
 	<section id="lists" class="col-xs-6">
 		<h2>{{user}}'s Wishlist</h2>
 		<div id="carousel">

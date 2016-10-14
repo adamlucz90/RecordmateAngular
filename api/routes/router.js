@@ -10,24 +10,33 @@ var ctrlAuth = require('../controllers/authenticate');
 var ctrlWishlist = require('../controllers/wishlist');
 var ctrlCollection = require('../controllers/collection');
 var ctrlFriend = require('../controllers/friendlist');
+var ctrlBio = require('../controllers/profile');
+
+//profile
+router.post('/user/:username/bio', ctrlBio.bioUpdate);
+router.get('/user/:username/bio', ctrlBio.bioRender);
+router.post('/user/:username/bands', ctrlBio.bandUpdate);
+router.get('/user/:username/bands', ctrlBio.bandRender);
 
 //friendlist
-router.post('/friendlistAdd', ctrlFriend.friendlistAdd);
-router.post('/friendlistRemove', ctrlFriend.friendlistRemove);
-router.post('/friendlistRender', ctrlFriend.friendlistRender);
+router.post('/user/:username/friendlist', ctrlFriend.friendlistAdd);
+router.delete('/user/:username/friendlist/friend/:friendname', ctrlFriend.friendlistRemove);
+router.get('/user/:username/friendlist', ctrlFriend.friendlistRender);
+router.get('/user/:username/friendlist/friend/:friendname', ctrlFriend.areFriends);
 
 // wishlist
-router.post('/wishlistAdd', ctrlWishlist.wishlistAdd);
-router.post('/wishlistRemove', ctrlWishlist.wishlistRemove);
-router.post('/wishlistRender', ctrlWishlist.wishlistRender);
+router.post('/user/:username/wishlist', ctrlWishlist.wishlistAdd);
+router.delete('/user/:username/wishlist/artist/:artist/album/:album', ctrlWishlist.wishlistRemove);
+router.get('/user/:username/wishlist', ctrlWishlist.wishlistRender);
 
 //collection
-router.post('/collectionAdd', ctrlCollection.collectionAdd);
-router.post('/collectionRemove', ctrlCollection.collectionRemove);
-router.post('/collectionRender', ctrlCollection.collectionRender);
+router.post('/user/:username/collection', ctrlCollection.collectionAdd);
+router.delete('/user/:username/collection/artist/:artist/album/:album', ctrlCollection.collectionRemove);
+router.get('/user/:username/collection', ctrlCollection.collectionRender);
 
 // authentication
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
+router.get('/user/:username', ctrlAuth.searchUser);
 
 module.exports = router;

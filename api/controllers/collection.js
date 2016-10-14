@@ -8,7 +8,7 @@ var sendJSONresponse = function(res, status, content) {
 
 module.exports.collectionAdd = function(req, res){
 	
-	collect.findOne({username: req.body.username, artist: req.body.artist, album: req.body.album}, function(err, collectItem){
+	collect.findOne({username: req.params.username, artist: req.body.artist, album: req.body.album}, function(err, collectItem){
 		if(err){
 			return res.status(500);
 		}
@@ -38,7 +38,7 @@ module.exports.collectionAdd = function(req, res){
 
 module.exports.collectionRemove = function(req, res){
 	
-	collect.findOneAndRemove({username: req.body.username, artist: req.body.artist, album: req.body.album}, function(err, item, result){
+	collect.findOneAndRemove({username: req.params.username, artist: req.params.artist, album: req.params.album}, function(err, item, result){
 		if(err){
 			return res.status(500);
 		}
@@ -49,8 +49,7 @@ module.exports.collectionRemove = function(req, res){
 };
 
 module.exports.collectionRender = function(req, res){
-
-	collect.find({username: req.body.user}).lean().exec(function(err, items){
+	collect.find({username: req.params.username}).lean().exec(function(err, items){
 		if(err){
 			return res.status(500);
 		}

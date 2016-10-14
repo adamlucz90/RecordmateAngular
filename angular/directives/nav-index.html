@@ -24,8 +24,8 @@
           <a ng-show="loggedIn" class="nav-link" href="" ng-click="logout()" id="logout">Logout</a>
         </li>
       </ul>
-      <form class="form-inline pull-xs-right" id="user-search">
-        <input class="form-control" type="text" name ="user" id="user-search-form" placeholder="Search User's Wishlist" required>
-        <button class="btn btn-success" type="submit">Search</button>
+      <form class="form-inline pull-xs-right" id="user-search" ng-submit="userSearch()">
+        <input class="form-control" type="text" ng-model="searchUser" id="user-search-form" placeholder="Search For User" required>
+        <input type="submit" id="submit" class="btn btn-success" value="Search!"/>
       </form>
     </nav>

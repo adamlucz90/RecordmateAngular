@@ -1,1 +1,1 @@
-angular.module('recordmate', ['ngRoute', 'ngSanitize', 'ngNotificationsBar']);
+angular.module('recordmate', ['ngRoute', 'ngSanitize', 'ngNotificationsBar', 'ngTouch', 'ui.bootstrap', 'ui.gravatar']);

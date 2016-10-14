@@ -1,17 +1,23 @@
 angular.
   module('recordmate').
-  config(['$locationProvider' ,'$routeProvider', 'notificationsConfigProvider',
-    function config($locationProvider, $routeProvider, notificationsConfigProvider) {
-	    //config for ngNotificationsBar
-	    // auto hide
-	    notificationsConfigProvider.setAutoHide(true);
+  config(['$locationProvider' ,'$routeProvider', 'notificationsConfigProvider', 'gravatarServiceProvider',
+    function config($locationProvider, $routeProvider, notificationsConfigProvider, gravatarServiceProvider) {
+	  //config for ngNotificationsBar
+	  // auto hide
+	  notificationsConfigProvider.setAutoHide(true);
 	
-	    // delay before hide
-	    notificationsConfigProvider.setHideDelay(5000);    	
+	  // delay before hide
+	  notificationsConfigProvider.setHideDelay(4000); 
+
+	  //gravatar configuration
+	  gravatarServiceProvider.defaults = {
+		    size: 200,
+		    "default": 'mm'  // Mystery man as default for missing avatars
+	  };  	
     	
       $locationProvider.hashPrefix('!');
       
-	//config for routeprovider
+	  //config for routeprovider
       $routeProvider.
         when('/search', {
             templateUrl: '/templates/search-index.html',
@@ -52,6 +58,11 @@ angular.
         	templateUrl: '/templates/profile-index.html',
         	controller: 'profileController',
         	controllerAs: 'profileCtrl'
+        }).
+        when('/userProfile', {
+        	templateUrl: '/templates/usersearch-index.html',
+        	controller: 'searchProfileController',
+        	controllerAs: 'searchProfileCtrl'
         }).
         otherwise({redirectTo: '/search'});
 
