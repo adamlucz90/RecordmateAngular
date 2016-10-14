@@ -13,7 +13,16 @@ angular
 			};
 			
 			$scope.userSearch = function(){
-				userAuth.userSearch($scope.searchUser);
+				userAuth.userSearch($scope.searchUser).then(function (goToProfile) {
+				    if (goToProfile) {
+				    	if($location.path() == '/userProfile'){
+				    		$scope.$broadcast('rerun');
+				    	}
+				    	else{
+				      		$location.path('/userProfile');
+				      	}
+				    }
+			  });
 			}
 		
 	}])

@@ -86,10 +86,11 @@ angular
 	      		return $http.get(url).success(function(data){
 	      			if(data.noUser){
 	      				notifications.showError({message: data.noUser});
+	      				return false;
 	      			}
 	      			else{
 	      				searchedUser = data;
-	      				$location.path('/userProfile');
+						return true;
 	      			}
 	      		});
 	      	};

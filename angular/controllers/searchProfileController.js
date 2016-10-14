@@ -2,7 +2,9 @@ angular.
 	module("recordmate").
 	controller("searchProfileController", ['$scope', '$location', 'userAuth', 'collection', 'Profile',
 		function($scope, $location, userAuth, collection, Profile){
-			
+		
+		//create a function that renders the page	
+		var pageRender = function(){	
 			$scope.user = userAuth.searchUserGet().user;
 
 			$scope.email = userAuth.searchUserGet().email;
@@ -179,5 +181,18 @@ angular.
 			bioRender();								
 			wishRender();	
 			collectionRender();
-			friendRender();		
-		}]);
+			friendRender();	
+		};
+		
+		/**
+		 *If the user is calling the search page 
+		 * from the search page re-render 
+		 * the page with the new info 
+		 */
+		$scope.$on('rerun', function(){
+			pageRender();
+		});
+		
+		//Render the page		
+		pageRender();	
+}]);
