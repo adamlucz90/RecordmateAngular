@@ -1,66 +1,66 @@
-	<navigationbar></navigationbar>
-	<notifications-bar class="notifications"></notifications-bar>
-    <!--Album info results Section-->
-    <section id="results">
-        <!--Album profile section-->
-        <section id="album-profile">
+<navigationbar></navigationbar>
+<notifications-bar class="notifications"></notifications-bar>
+<!--Album info results Section-->
+<section id="results">
+	<!--Album profile section-->
+	<section id="album-profile">
 
-           <div id="info" class="col-xs-7">
-           		<h1>{{albumInfo.album.artist}}</h1>
-           		<h1>{{albumInfo.album.name}}</h1>
-           		<p ng-show="wiki" ng-bind-html="wiki"></p>
-           		<p ng-show="!wiki">No info available.</p>
-           		<h3>Tracklist</h3>
-           		<ul style="list-style-type:none" ng-repeat="track in tracks">
-           			<li>{{track}}</li>
-           		</ul>
+		<div id="info" class="col-xs-7">
+			<h1>{{albumInfo.album.artist}}</h1>
+			<h1>{{albumInfo.album.name}}</h1>
+			<p ng-show="wiki" ng-bind-html="wiki"></p>
+			<p ng-show="!wiki">No info available.</p>
+			<h3>Tracklist</h3>
+			<ul style="list-style-type:none" ng-repeat="track in tracks">
+				<li>
+					{{track}}
+				</li>
+			</ul>
 
-           		<span ng-repeat="tag in tags"><a href="" ng-click="tagSearch(tag)">{{tag}} </a> </span>
+			<span ng-repeat="tag in tags"><a href="" ng-click="tagSearch(tag)">{{tag}} </a> </span>
+		</div>
 
+		<div id="cover" class="col-xs-5">
+			<div id="addButton" class="col-xs-8">
+				<button ng-show="loggedIn" ng-click="wishlistAdd()" class="btn btn-success"  type="button" ng-disabled="inList">
+					Add to Wishlist!
+				</button>
+			</div>
+			<div id="collectButton" class="col-xs-8">
+				<button ng-show="loggedIn" ng-click="collectionAdd()" class="btn btn-success" type="button" ng-disabled="inCollect">
+					Add to Collection
+				</button>
+			</div>
 
-          </div> 	
-            
-          <div id="cover" class="col-xs-5">
-                <div id="addButton" class="col-xs-8">
-                	<button ng-show="loggedIn" ng-click="wishlistAdd()" class="btn btn-success"  type="button" ng-disabled="inList">Add to Wishlist!</button>
-                </div>
-                <div id="collectButton" class="col-xs-8">
-                	<button ng-show="loggedIn" ng-click="collectionAdd()" class="btn btn-success" type="button" ng-disabled="inCollect">Add to Collection</button>
-                </div>
+			<h3 ng-show="!loggedIn">Login or Register to add to wishlist!</h3>
 
-                <h3 ng-show="!loggedIn">Login or Register to add to wishlist!</h3>
+			<div id="cover-img">
+				<img ng-src="{{cover[3]}}" class="img-responsive"/>
+			</div>
+		</div>
+	</section>
 
-                <div id="cover-img">
-                	<img ng-src="{{cover[3]}}" class="img-responsive"/>
-                </div>
-            </div>
-        </section>
-        
-        <!--video and ebay listings-->
-        <section id="video-profile">
-            <div id="videos" class="col-xs-6">
-            	<h2>Video Results</h2>
-            	<ul id="video-list" style="list-style-type:none" ng-repeat="video in videos">
-            		<li><iframe width="260" height="185" ng-src="{{video.link}}"></iframe></li>
-            	</ul>
-            </div>
-            <div id="ebay" class="col-xs-6">
-                <h2>eBay Listings</h2>
-                <table width="100%" border="0" cellspacing="0" cellpadding="3">
-                	<tbody>
-                		<tr ng-repeat="item in ebayInfo">
-                			<td>
-                				<img ng-src="{{item.galleryURL[0]}}" border="0"/>
-                			</td>
-                			<td>
-                				<a ng-href="{{item.viewItemURL[0]}}" target="_blank">{{item.title[0]}}</a>
-                			</td>
-                			<td>
-                				<h4>{{item.sellingStatus[0].currentPrice[0]["__value__"]}} {{item.sellingStatus[0].currentPrice[0]["@currencyId"]}}</h4>
-                			</td>
-                		</tr>
-                	</tbody>
-                </table>
-            </div>
-        </section>
-    </section> 
+	<!--video and ebay listings-->
+	<section id="video-profile">
+		<div id="videos" class="col-xs-6">
+			<h2>Video Results</h2>
+			<ul id="video-list" style="list-style-type:none" ng-repeat="video in videos">
+				<li>
+					<iframe width="260" height="185" ng-src="{{video.link}}"></iframe>
+				</li>
+			</ul>
+		</div>
+		<div id="ebay" class="col-xs-6">
+			<h2>eBay Listings</h2>
+			<table width="100%" border="0" cellspacing="0" cellpadding="3">
+				<tbody>
+					<tr ng-repeat="item in ebayInfo">
+						<td><img ng-src="{{item.galleryURL[0]}}" border="0"/></td>
+						<td><a ng-href="{{item.viewItemURL[0]}}" target="_blank">{{item.title[0]}}</a></td>
+						<td><h4>{{item.sellingStatus[0].currentPrice[0]["__value__"]}} {{item.sellingStatus[0].currentPrice[0]["@currencyId"]}}</h4></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</section>

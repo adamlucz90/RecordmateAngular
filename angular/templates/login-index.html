@@ -1,22 +1,21 @@
-	<navigationbar></navigationbar>
-    <section id="log">
-        <div class="col-xs-5"></div>
-        <div class="col-xs-2">
-        <notifications-bar class="notifications"></notifications-bar>
-                <h2>Log In</h2>
-                <form name="login" ng-submit="onSubmit()" novalidate>
-                    <fieldset>
-                        <div class="form-group" ng-class="{'has-error' : login.user.username.$invalid && !login.user.username.$pristine}">
-                            <input autocomplete="off" autofocus class="form-control" id="user" ng-model="user.username" placeholder="Username" type="text" required/>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" ng-model="user.password" placeholder="Password (Case Sensitive)" type="password" required/>                           
-                        </div>
-                        <div class="form-group">
-            				<input type="submit" id="submit" class="btn btn-success" ng-disabled="login.$invalid" value="Log in!"/>
-                        </div>
-                    </fieldset>
-                </form>
-                <h4>Not a member? <a href="#!/register">Register here!</a></h4>
-                
-    </section>
+<navigationbar></navigationbar>
+<notifications-bar class="notifications"></notifications-bar>
+<section id="log">
+	<div class="col-xs-5"></div>
+	<div class="col-xs-2">
+		<h2>Log In</h2>
+		<form name="login" ng-submit="onSubmit()" novalidate>
+			<fieldset>
+				<div class="form-group" ng-class="{'has-error' : login.user.username.$invalid && !login.user.username.$pristine}">
+					<input autocomplete="off" autofocus class="form-control" id="user" ng-model="user.username" placeholder="Username" type="text" required/>
+				</div>
+				<div class="form-group">
+					<input class="form-control" ng-model="user.password" placeholder="Password (Case Sensitive)" type="password" required/>
+				</div>
+				<div class="form-group">
+					<input type="submit" id="submit" class="btn btn-success" ng-disabled="login.$invalid" value="Log in!"/>
+				</div>
+			</fieldset>
+		</form>
+		<h4>Not a member? <a href="#!/register">Register here!</a></h4>
+</section>

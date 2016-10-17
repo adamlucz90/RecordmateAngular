@@ -1,7 +1,7 @@
 {
   "name": "recordmate",
   "description": "An app that allows users to search and catalog the music they love.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/angular/recordmateAngular",
   "license": "MIT",
   "private": true,

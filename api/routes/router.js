@@ -39,4 +39,4 @@ router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 router.get('/user/:username', ctrlAuth.searchUser);
 
-module.exports = router; 
+module.exports = router;

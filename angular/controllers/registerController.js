@@ -5,6 +5,7 @@ angular.
 			//boolean to display passwords don't match
 			$scope.match = false;
 			
+			//create object to pass to onSubmit function
 			$scope.user = {
 				username: "",
 				email: "",
@@ -33,6 +34,5 @@ angular.
 		        		}
 		      		});
 				}
-			};
-		
-	}]);
+			};	
+		}]);

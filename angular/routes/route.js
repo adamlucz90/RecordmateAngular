@@ -7,7 +7,7 @@ angular.
 	  notificationsConfigProvider.setAutoHide(true);
 	
 	  // delay before hide
-	  notificationsConfigProvider.setHideDelay(4000); 
+	  notificationsConfigProvider.setHideDelay(3000); 
 
 	  //gravatar configuration
 	  gravatarServiceProvider.defaults = {

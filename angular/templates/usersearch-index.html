@@ -5,24 +5,36 @@
 		<div>
 			<h1>{{user}}'s Profile</h1>
 			<img/>
-			<button ng-show="!areFriends && loggedIn" class="btn btn-success" ng-click="addFriend()" type="button">Add {{user}} As A Friend!</button>
-			<button ng-show="areFriends && loggedIn" class="btn btn-danger" ng-click="removeFriend()" type="button">Unfriend {{user}}</button>			
+			<button ng-show="!areFriends && loggedIn" class="btn btn-success" ng-click="addFriend()" type="button">
+				Add {{user}} As A Friend!
+			</button>
+			<button ng-show="areFriends && loggedIn" class="btn btn-danger" ng-click="removeFriend()" type="button">
+				Unfriend {{user}}
+			</button>
 		</div>
 		<div>
-			<p ng-show="noBio">{{user}} hasn't created a bio!</p>
-			<p ng-show="!noBio">{{bio}}</p>
+			<p ng-show="noBio">
+				{{user}} hasn't created a bio!
+			</p>
+			<p ng-show="!noBio">
+				{{bio}}
+			</p>
 		</div>
 		<div>
 			<h3>{{user}}'s Favorite Bands</h3>
-			<p ng-show="noBands">{{user}} hasn't added any bands yet!</p>
-			<p ng-show="!noBands" ><a ng-repeat="band in bands" href="" ng-click="bandSearch(band)">{{band}}, </a> </p>
+			<p ng-show="noBands">
+				{{user}} hasn't added any bands yet!
+			</p>
+			<p ng-show="!noBands" >
+				<a ng-repeat="band in bands" href="" ng-click="bandSearch(band)">{{band}}, </a>
+			</p>
 		</div>
 		<div>
 			<h3>friendlist</h3>
 			<ul style="list-style-type:none">
-			<h4 ng-show="emptyFriend">{{user}} has no friends :(</h4>
-				<li ng-repeat="friend in friends">
-					<h4><a href="" ng-click="friendSearch(friend.friendname)">{{friend.friendname}}</a></h4>
+				<h4 ng-show="emptyFriend">{{user}} has no friends :(</h4>
+				<li>
+					<h4 ng-repeat="friend in friends"><a href="" ng-click="friendSearch(friend.friendname)">{{friend.friendname}}</a></h4>
 				</li>
 			</ul>
 		</div>
@@ -30,19 +42,21 @@
 	<section class="col-xs-2">
 		<div>
 			<img gravatar-src="email"/>
-			<p>Powered by <a href="https://en.gravatar.com/" target="_blank">Gravatar</a></p>			
+			<p>
+				Powered by <a href="https://en.gravatar.com/" target="_blank">Gravatar</a>
+			</p>
 		</div>
-	</section>	
+	</section>
 	<section id="lists" class="col-xs-6">
 		<h2>{{user}}'s Wishlist</h2>
 		<div id="carousel">
 			<div uib-carousel interval="interval" active="active">
 				<div uib-slide ng-repeat="item in wishItems track by item.id" index="item.id">
-					<img ng-src="{{item.url}}" id="carouselImg"/>				
+					<img ng-src="{{item.url}}" id="carouselImg"/>
 					<div class="carousel-caption">
 						<h4>{{item.artist}}</h4>
 						<h4>{{item.album}}</h4>
-					</div>				
+					</div>
 				</div>
 			</div>
 		</div>
@@ -54,9 +68,9 @@
 					<div class="carousel-caption">
 						<h4>{{colItem.artist}}</h4>
 						<h4>{{colItem.album}}</h4>
-					</div>					
+					</div>
 				</div>
 			</div>
-		</div>		
+		</div>
 	</section>
 </section>

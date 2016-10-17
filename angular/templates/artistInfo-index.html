@@ -1,19 +1,23 @@
-	<navigationbar></navigationbar>
-	<notifications-bar class="notifications"></notifications-bar>
-	<section id="wishlist" class="col-xs-12">
-		<h1>{{title}}'s Top Albums</h1>
-		<ul style="list-style-type:none" class="list-inline">
-			<li ng-repeat="album in albums">
-            	<div class="panel-heading">
-            		<h4>{{album.artist.name}}</h4>
-            		<h4>{{album.name}}</h4>
-            	</div>
-            	<div class="panel-body">
-            		<img ng-show="!album.image[2]['#text']" src="/nocover.jpg" class="img-responsive" ng-click="albumSearch(album.artist.name, album.name)"/>
-            		<img ng-show="album.image[2]['#text']" ng-src="{{album.image[2]['#text']}}" class="img-responsive" href=" " ng-click="albumSearch(album.artist.name, album.name)"/>
-            		<button class="btn btn-success" ng-click="wishAdd(album.artist.name, album.name, album.image[2]['#text'])" ng-show="isLoggedIn">Add to Wishlist</button>
-            		<button class="btn btn-success" ng-click="collectAdd(album.artist.name, album.name, album.image[2]['#text'])" ng-show="isLoggedIn">Add to Collection</button>
-            	</div>				
-			</li>
-		</ul>
-	</section>
+<navigationbar></navigationbar>
+<notifications-bar class="notifications"></notifications-bar>
+<section id="wishlist" class="col-xs-12">
+	<h1>{{title}}'s Top Albums</h1>
+	<ul style="list-style-type:none" class="list-inline">
+		<li ng-repeat="album in albums">
+			<div class="panel-heading">
+				<h4>{{album.artist.name}}</h4>
+				<h4>{{album.name}}</h4>
+			</div>
+			<div class="panel-body">
+				<img ng-show="!album.image[2]['#text']" src="/nocover.jpg" class="img-responsive" ng-click="albumSearch(album.artist.name, album.name)"/>
+				<img ng-show="album.image[2]['#text']" ng-src="{{album.image[2]['#text']}}" class="img-responsive" href=" " ng-click="albumSearch(album.artist.name, album.name)"/>
+				<button class="btn btn-success" ng-click="wishAdd(album.artist.name, album.name, album.image[2]['#text'])" ng-show="isLoggedIn">
+					Add to Wishlist
+				</button>
+				<button class="btn btn-success" ng-click="collectAdd(album.artist.name, album.name, album.image[2]['#text'])" ng-show="isLoggedIn">
+					Add to Collection
+				</button>
+			</div>
+		</li>
+	</ul>
+</section>

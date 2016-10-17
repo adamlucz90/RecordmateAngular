@@ -1,28 +1,28 @@
 <navigationbar></navigationbar>
+<notifications-bar class="notifications"></notifications-bar>
 <section id="log">
-	<notifications-bar class="notifications"></notifications-bar>
 	<div class="col-xs-5"></div>
-    <div class="col-xs-2">
-	<h2>Register</h2>
-    	<form name="registerForm" ng-submit="onSubmit()" novalidate>
-         	<fieldset>
-            	<div class="form-group" ng-class="{ 'has-error' : registerForm.user.username.$invalid && !registerForm.user.username.$pristine }">
-                	<input autocomplete="off" autofocus class="form-control" ng-model="user.username" ng-minlength="1" placeholder="Username" type="text" required/>
-                </div>
-            	<div class="form-group">
-                	<input autocomplete="off" autofocus class="form-control" ng-model="user.email" ng-minlength="1" placeholder="email" type="email" required/>
-                </div>                
-                <div class="form-group">
-                    <input class="form-control" ng-model="user.password" ng-minlength="6" placeholder="Password (min 6 chars)" type="password" required/>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" ng-model="confirmation" placeholder="Confirm Password" type="password" required/>
-                </div>
-                <div class="form-group">
-            		<input type="submit" id="submit" class="btn btn-success" ng-disabled="registerForm.$invalid" value="Register"/>
-                </div>
-             </fieldset>
-         </form>    
-        </div>
-        <div class="col-xs-5"></div>
+	<div class="col-xs-2">
+		<h2>Register</h2>
+		<form name="registerForm" ng-submit="onSubmit()" novalidate>
+			<fieldset>
+				<div class="form-group" ng-class="{ 'has-error' : registerForm.user.username.$invalid && !registerForm.user.username.$pristine }">
+					<input autocomplete="off" autofocus class="form-control" ng-model="user.username" ng-minlength="1" placeholder="Username" type="text" required/>
+				</div>
+				<div class="form-group">
+					<input autocomplete="off" autofocus class="form-control" ng-model="user.email" ng-minlength="1" placeholder="email" type="email" required/>
+				</div>
+				<div class="form-group">
+					<input class="form-control" ng-model="user.password" ng-minlength="6" placeholder="Password (min 6 chars)" type="password" required/>
+				</div>
+				<div class="form-group">
+					<input class="form-control" ng-model="confirmation" placeholder="Confirm Password" type="password" required/>
+				</div>
+				<div class="form-group">
+					<input type="submit" id="submit" class="btn btn-success" ng-disabled="registerForm.$invalid" value="Register"/>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<div class="col-xs-5"></div>
 </section>

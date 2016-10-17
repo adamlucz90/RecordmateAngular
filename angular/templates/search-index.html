@@ -1,58 +1,58 @@
-	<navigationbar></navigationbar>
-    <section id="search" class="col-xs-12">
-    	<notifications-bar class="notifications"></notifications-bar>
-    	
-        <h2>Search by Album</h2>
-        <!--search by album form-->
-        <form id="form-search" ng-submit="albumSearch()" class="form-inline">
-            <div class="form-group">
-                <input type="text" ng-model="searchAlbum.artist" placeholder="Artist" class="form-control" required/>
-            </div>
-            <div class="form-group">
-                <input type="text" ng-model="searchAlbum.album" placeholder="Album Title" class="form-control" required/>
-            </div>
-            	<input type="submit" id="submit" class="btn btn-success" value="Search!"/>
-            <div>
-                <label class="radio-inline">
-                     <input type="radio" ng-model="albumFormat" value="cd" name="album">CD
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" ng-model="albumFormat" value="vinyl" name="album">Vinyl
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" ng-model="albumFormat" value="cassette" name="album">Cassette
-                </label>
-            </div>
-        </form>
-        
-        <!--Search by Song form-->
-        <h2>Search by Song</h2>
-        <form id="form-search-song" ng-submit="songSearch()" class="form-inline">
-            <div class="form-group">
-                <input type="text" ng-model="searchSong.artist" placeholder="Artist" class="form-control" required/>
-            </div>
-            <div class="form-group">
-                <input type="text" ng-model="searchSong.track" placeholder="Song Title" class="form-control" required/>
-            </div>
-            	<input type="submit" id="submit" class="btn btn-success" value="Search!"/>
-            <div>
-                <label class="radio-inline">
-                     <input type="radio" ng-model="songFormat" value="cd" name="song">CD
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" ng-model="songFormat" value="vinyl" name="song">Vinyl
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" ng-model="songFormat" value="cassette" name="song">Cassette
-                </label>
-            </div>
-       	</form> 
-       	
-       	<h2>Search by Artist</h2>
-       	<form id="form-search-artist" ng-submit="artistSearch()" class="form-inline">
-       		<div class="form-group">
-       			<input type="text" ng-model="artistSearch.artist" placeholder="Arist" class="form-control" required/>
-       		</div>
-       		<input type="submit" class="btn btn-success" value="Search!"/>
-       	</form>
-    </section>
+<navigationbar></navigationbar>
+<notifications-bar class="notifications"></notifications-bar>
+<section id="search" class="col-xs-12">
+	<h2>Search by Album</h2>
+	<!--search by album form-->
+	<form id="form-search" ng-submit="albumSearch()" class="form-inline">
+		<div class="form-group">
+			<input type="text" ng-model="searchAlbum.artist" placeholder="Artist" class="form-control" required/>
+		</div>
+		<div class="form-group">
+			<input type="text" ng-model="searchAlbum.album" placeholder="Album Title" class="form-control" required/>
+		</div>
+		<input type="submit" id="submit" class="btn btn-success" value="Search!"/>
+		<div>
+			<label class="radio-inline">
+				<input type="radio" ng-model="albumFormat" value="cd" name="album">
+				CD </label>
+			<label class="radio-inline">
+				<input type="radio" ng-model="albumFormat" value="vinyl" name="album">
+				Vinyl </label>
+			<label class="radio-inline">
+				<input type="radio" ng-model="albumFormat" value="cassette" name="album">
+				Cassette </label>
+		</div>
+	</form>
+
+	<!--Search by Song form-->
+	<h2>Search by Song</h2>
+	<form id="form-search-song" ng-submit="songSearch()" class="form-inline">
+		<div class="form-group">
+			<input type="text" ng-model="searchSong.artist" placeholder="Artist" class="form-control" required/>
+		</div>
+		<div class="form-group">
+			<input type="text" ng-model="searchSong.track" placeholder="Song Title" class="form-control" required/>
+		</div>
+		<input type="submit" id="submit" class="btn btn-success" value="Search!"/>
+		<div>
+			<label class="radio-inline">
+				<input type="radio" ng-model="songFormat" value="cd" name="song">
+				CD </label>
+			<label class="radio-inline">
+				<input type="radio" ng-model="songFormat" value="vinyl" name="song">
+				Vinyl </label>
+			<label class="radio-inline">
+				<input type="radio" ng-model="songFormat" value="cassette" name="song">
+				Cassette </label>
+		</div>
+	</form>
+
+	<!--Search By Artist-->
+	<h2>Search by Artist</h2>
+	<form id="form-search-artist" ng-submit="artistSearch()" class="form-inline">
+		<div class="form-group">
+			<input type="text" ng-model="artistSearch.artist" placeholder="Arist" class="form-control" required/>
+		</div>
+		<input type="submit" class="btn btn-success" value="Search!"/>
+	</form>
+</section>
