@@ -28,8 +28,8 @@ angular.
 				var url = '/api/user/:username/wishlist/artist/:artist/album/:album'.replace(':username', username).replace(':artist', artist).replace(':album', album);
 		
 				return $http.delete(url).success(function(data) {
-					notifications.showSuccess({
-						message : "Item successfully removed from your wishlist"
+					notifications.showError({
+						message : "Item successfully removed from your wishlist!"
 					});
 				});
 			};
@@ -40,7 +40,7 @@ angular.
 			};
 		
 			var collectionAdd = function(item) {
-				var username = encodeURIComponent(item.user);
+				var username = encodeURIComponent(item.username);
 		
 				var url = '/api/user/:username/collection'.replace(':username', username);
 		
@@ -66,7 +66,7 @@ angular.
 				var url = '/api/user/:username/collection/artist/:artist/album/:album'.replace(':username', username).replace(':artist', artist).replace(':album', album);
 		
 				return $http.delete(url).success(function(data) {
-					notifications.showSuccess({
+					notifications.showError({
 						message : "Item successfully removed from your collection!"
 					});
 				});
