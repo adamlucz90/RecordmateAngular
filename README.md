@@ -24,6 +24,7 @@ After creating an account users are then able to add albums they search to eithe
 
 ### Last.fm
 Last.fm's API's are the primary way this app get's information on artists, albums, and genre's.
+
 You can find out more about Last.fm's API's here: http://www.last.fm/api/webauth
 * album.getInfo is used to get all the album information that fills in the /albumInfo page and subsequently stored in the database when a user adds the album to their wishlist or collection.
 * track.getInfo is used to retrieve info on a specific song searched by the user.
