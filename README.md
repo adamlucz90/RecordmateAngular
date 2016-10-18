@@ -17,28 +17,31 @@ After creating an account users are then able to add albums they search to eithe
 * Bootstrap is used to make the front end look nice and pretty.
 * ng-notifications-bar is used for the user notifications.
 * Passport is used for user authentication on the back-end.
-* Serve-favicon is used to serve up that need little record on the header.
+* Serve-favicon is used to serve up that neat little record on the header.
 * Angular-gravatar is used to support Gravatar images for the user profiles.
 
 ##Api's Used
 
 ### Last.fm
 Last.fm's API's are the primary way this app get's information on artists, albums, and genre's.
+You can find out more about Last.fm's API's here: http://www.last.fm/api/webauth
 * album.getInfo is used to get all the album information that fills in the /albumInfo page and subsequently stored in the database when a user adds the album to their wishlist or collection.
 * track.getInfo is used to retrieve info on a specific song searched by the user.
 * artist.getTopAlbums is used to return the top albums of an artist when searched.
 * tag.getTopAlbums is used to return the top albums of a specific genre when searched.
 
 ### YouTube
+You can find out more about the YouTube search API here: https://developers.google.com/youtube/v3/docs/search/list#parameters
 * YouTube's search API is used to return the url's of videos related to the queried album.
 
 ### eBay
+You can find out out more about the eBay FindingService here: http://developer.ebay.com/DevZone/finding/CallRef/index.html
 * eBay's FindingService Api is used to return information on live eBay auctions related to the queried album.
 
 # Features
 
 ## Album And Artist Searches
-The primary features are the ability to search for an album based on the title or the song, and be returned a host of useful information about it.
+The primary features are the ability to search for an album based on the title or the song and be returned a host of useful information about it.
 
 ### Album Title Search
 Enter the name of the artist and album title you wish to look up.  The format buttons are optional but will help optimize your eBay search returns.
