@@ -15,7 +15,7 @@ angular.
 						});
 					} else {
 						notifications.showSuccess({
-							message : "You are now friends with "
+							message : "You are now friends with " + item.friendname
 						});
 					}
 				});
@@ -29,8 +29,8 @@ angular.
 				var url = '/api/user/:username/friendlist/friend/:friendname'.replace(':username', username).replace(':friendname', friendname);
 		
 				return $http.delete(url).success(function(data) {
-					notifications.showSuccess({
-						message : item.friend + " successfully removed from your friendslist"
+					notifications.showError({
+						message : item.friendname + " successfully removed from your friendslist"
 					});
 				});
 			};
