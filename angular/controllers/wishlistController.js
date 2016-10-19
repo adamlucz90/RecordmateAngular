@@ -45,6 +45,7 @@ angular.
 		
 				collection.collectionAdd(item).success(function(data) {
 					collection.wishlistRemove(item);
+					render();
 				});
 			};
 		
