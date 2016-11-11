@@ -56,7 +56,7 @@ module.exports.wishlistRender = function(req, res){
 		}
 		
 		//send back ok status and the wishlist items
-		res.status(200).json({items});
+		res.status(200).json({items: items});
 		
 	});
 };

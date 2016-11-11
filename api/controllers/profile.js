@@ -41,7 +41,7 @@ module.exports.bioRender = function(req, res){
 		}
 		
 		//send back ok status and the wishlist items
-		res.status(200).json({item});
+		res.status(200).json({item: item});
 		
 	});	
 };
@@ -80,7 +80,7 @@ module.exports.bandRender = function(req, res){
 		}
 		
 		//send back ok status and the wishlist items
-		res.status(200).json({item});
+		res.status(200).json({item: item});
 		
 	});	
 };

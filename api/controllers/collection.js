@@ -55,7 +55,7 @@ module.exports.collectionRender = function(req, res){
 		}
 		
 		//send back ok status and collection items
-		res.status(200).json({items});
+		res.status(200).json({items: items});
 
 	});
 };

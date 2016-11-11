@@ -54,7 +54,7 @@ module.exports.friendlistRender = function(req, res){
 		}
 
 		//send back ok status and the wishlist items
-		res.status(200).json({friends});
+		res.status(200).json({friends: friends});
 		
 	});
 };
