@@ -83,7 +83,21 @@ angular.
 				//Comment section
 				var commentRender = function() {
 					comments.commentRender($scope.albumInfo.album.artist, $scope.albumInfo.album.name).success(function(data){
-						console.log(data);
+						var commentNum = data.comments.length;
+
+						$scope.comments = data.comments;
+						
+						if(commentNum == 0){
+							$scope.commentCount = "No comments on this album yet!";
+						}
+						else{
+							if(commentNum == 1){
+								$scope.commentCount = commentNum + " comment";
+							}
+							else{
+								$scope.commentCount = commentNum + " comments";
+							}
+						}
 					});
 				};
 				
@@ -102,6 +116,25 @@ angular.
 						commentRender();
 					});
 				};
+				
+			//When a comment username is clicked, the user is taken to their profile
+			$scope.profileSearch = function(user) {
+				userAuth.userSearch(user).then(function() {
+					if ($location.path() == '/userProfile') {
+						//rerun the $scope if already on the /userProfile page
+						$scope.$broadcast('rerun');
+					} else {
+						//redirect to user's profile
+						$location.path('/userProfile');
+					}
+		
+				}, function(err) {
+					//if the user doesn't exist '
+					notifications.showError({
+						message : err.message
+					});
+				});
+			};				
 				
 				commentRender();
 				

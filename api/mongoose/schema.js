@@ -82,7 +82,8 @@ var commentSchema = new mongoose.Schema({
 	email : String,
 	artist : String,
 	album : String,
-	comment : String
+	comment : String,
+	date: { type: Date, default: Date.now}
 }, {
 	collection : 'comments'
 });

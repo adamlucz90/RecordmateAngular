@@ -65,18 +65,29 @@
 	</section>
 </section>
 <section id ="comments">
-	<h2>{{commentCount}}</h2>
 	<div class="col-xs-12">
-		<h4 ng-show="!loggedIn">You must be logged in to comment! <a href="/register">Register Here!</a>"</h4>
-		<textarea ng-model="commentInput" rows="6" cols="50">What do you think of this album?</textarea>				
+		<h2>{{commentCount}}</h2>
+		<h3 ng-show="!loggedIn">You must be logged in to comment! <a href="/login">Log in</a> or <a href="/register">Register</a>!</h3>
+		<textarea ng-model="commentInput" rows="6" cols="50" ng-show="isLogged">What do you think of this album?</textarea>				
 		</br>
- 		<input type="button" id="submit" class="btn btn-success" ng-click="commentSubmit()" value="Submit!"/>
+ 		<input type="button" id="submit" class="btn btn-success" ng-click="commentSubmit()" value="Submit!" ng-show="isLogged"/>
 	</div>
-	<!-- <div ng-repeat="comment in comments">
-		<img class=".img-rounded .img-responsive" gravatar-src="comment.email"/>
-		<h4>{{comment.user}}</h4>
-	</br>
-		<p>{{comment.commentBody}}</p>
-	</div> -->
+	<div id="comment-list" class="col-xs-12">
+		<ul style="list-style-type:none" class="col-xs-12">
+			<li ng-repeat="comment in comments" class="col-xs-12">
+				
+				<div id="img-name" class="col-xs-3">
+					<img class="img-circle img-responsive" gravatar-src="comment.email"/>
+				</div>
+				<div class="col-xs-4" id="comment-header">
+					<h4><a href="#" ng-click="profileSearch(comment.username)">{{comment.username}}</a></h4>
+					<span am-time-ago="comment.date"></span>				
+				</div>
+				<div id="comment-body" class="col-xs-6">
+					<p>{{comment.comment}}</p>
+				</div>
+			</li>
+		</ul>
+	</div>
 	
 </section>

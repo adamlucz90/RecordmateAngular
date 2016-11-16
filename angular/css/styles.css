@@ -286,3 +286,51 @@ footer {
 #profile button {
 	margin: 5px 0px 20px 0px;
 }
+
+#comments {
+  font-family: Century Gothic;
+  font-weight: bold;
+  color: #c2c2a3;
+  text-align:center;
+}
+
+#comments img {
+	max-height: 80px;
+	max-width: 80px;
+	padding: 0px 5px 0px 5px;
+	margin: 0px 0px 0px 240px;
+	text-align:right;
+}
+
+#comments h4 {
+	margin: 0px 5px 0px 5px;
+	text-align: left;
+}
+
+#comments a {
+	padding: 0px 0px 0px 0px;
+}
+
+#comment-header{
+	margin: 0px 10px 0px 5px;
+	text-align: left;
+}
+
+
+#comment-list li {
+	margin: 20px 0px 20px 0px;
+}
+
+#comment-body {
+	text-align: left;
+	font-weight: normal;
+	margin: 5px 0px 0px 15px;
+}
+
+#comment-list {
+	margin-left: 30px;
+}
+
+#comments textarea {
+	color: black;
+}

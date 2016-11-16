@@ -7,7 +7,6 @@ var sendJSONresponse = function(res, status, content) {
 };
 
 module.exports.commentAdd = function(req, res){
-	console.log("req");
 	//create and save new comment into database
 	comment.create({
 		username : req.params.username,
@@ -17,7 +16,7 @@ module.exports.commentAdd = function(req, res){
 		comment : req.body.comment,
 	}, function(err, item){
 		if(err){
-			res.status(500);
+			return res.status(500);
 		}
 		else{
 			res.status(200).json({
@@ -28,10 +27,9 @@ module.exports.commentAdd = function(req, res){
 };
 
 module.exports.commentRender = function(req, res){
-	console.log(req);
 	comment.find({artist: req.params.artist, album: req.params.album}).sort({date: 1}).lean().exec(function(err, comments){
 		if(err){
-			res.status(500);
+			return res.status(500);
 		}
 		
 		res.status(200).json({

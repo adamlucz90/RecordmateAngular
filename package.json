@@ -40,6 +40,8 @@
     "ng-notifications-bar": "0.0.16",
     "passport": "0.3.2",
     "passport-local": "1.0.0",
-    "serve-favicon": "2.3.0"
+    "serve-favicon": "2.3.0",
+    "angular-moment": "~1.0.0",
+    "moment": "~2.16.0"
   }
 }
