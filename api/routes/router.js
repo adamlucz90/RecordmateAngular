@@ -11,6 +11,11 @@ var ctrlWishlist = require('../controllers/wishlist');
 var ctrlCollection = require('../controllers/collection');
 var ctrlFriend = require('../controllers/friendlist');
 var ctrlBio = require('../controllers/profile');
+var ctrlComment = require('../controllers/comments');
+
+//comments
+router.post('/user/:username/artist/:artist/album/:album/comment', ctrlComment.commentAdd);
+router.get('/artist/:artist/album/:album/comment', ctrlComment.commentRender);
 
 //profile
 router.post('/user/:username/bio', ctrlBio.bioUpdate);

@@ -1,0 +1,31 @@
+angular.
+	module("recordmate").
+	service("comments", ['$http', 'notifications',
+		function($http, notifications){
+			var commentAdd = function(comment){
+				var username = encodeURIComponent(comment.username);
+				var artist = encodeURIComponent(comment.artist);
+				var album = encodeURIComponent(comment.album);
+				
+				var url = '/user/:username/artist/:artist/album/:album/comment'.replace(':username', username).replace(':artist', artist).replace(':album', album);
+				
+				return $http.post(url, comment).success(function(data){
+					notifications.showSuccess({
+							message : "Comment Added!"
+						});
+				});				
+			}
+			
+			var commentRender = function(artist, album){
+				var artist = encodeURIComponent(artist);
+				var album = encodeURIComponent(album);
+
+				var url = '/artist/:artist/album/:album/comment'.replace(':artist', artist).replace(':album', album);				
+				return $http.get(url);
+			}
+			
+			return{
+				commentAdd: commentAdd,
+				commentRender: commentRender
+			}		
+	}]);

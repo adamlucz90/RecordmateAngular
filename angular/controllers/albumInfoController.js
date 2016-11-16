@@ -1,7 +1,7 @@
 angular.
 	module("recordmate").
-	controller("AlbumInfoController", ['$scope', '$sce', '$location', 'Search', 'userAuth', 'collection', 
-		function($scope, $sce, $location, Search, userAuth, collection){
+	controller("AlbumInfoController", ['$scope', '$sce', '$location', 'Search', 'userAuth', 'collection', 'comments',
+		function($scope, $sce, $location, Search, userAuth, collection, comments){
 			//If the user is logged in the $scope element will be true
 			$scope.loggedIn = userAuth.isLogged();
 		
@@ -79,6 +79,33 @@ angular.
 						collection.collectionAdd(wishItem);
 					};
 				};
+				
+				//Comment section
+				var commentRender = function() {
+					comments.commentRender($scope.albumInfo.album.artist, $scope.albumInfo.album.name).success(function(data){
+						console.log(data);
+					});
+				};
+				
+				$scope.commentSubmit = function(){
+					var username = userAuth.getUser();
+					
+					var commentItem = {
+						username: username.name,
+						email: username.email,
+						artist: $scope.albumInfo.album.artist, 
+						album: $scope.albumInfo.album.name,
+						comment: $scope.commentInput
+					};
+					
+					comments.commentAdd(commentItem).success(function(data){
+						commentRender();
+					});
+				};
+				
+				commentRender();
+				
+				
 			} else {
 				//if no album info redirect back to home
 				$location.path('/search');

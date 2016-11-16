@@ -77,9 +77,20 @@ var bandSchema = new mongoose.Schema({
 	collection : 'bands'
 });
 
+var commentSchema = new mongoose.Schema({
+	username : String,
+	email : String,
+	artist : String,
+	album : String,
+	comment : String
+}, {
+	collection : 'comments'
+});
+
 mongoose.model('User', userSchema);
 mongoose.model('Wishlist', wishlistSchema);
 mongoose.model('Collection', collectionSchema);
 mongoose.model('Friendlist', friendSchema);
 mongoose.model('Bio', bioSchema);
 mongoose.model('Bands', bandSchema);
+mongoose.model('Comments', commentSchema);
