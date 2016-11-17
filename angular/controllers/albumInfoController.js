@@ -2,6 +2,7 @@ angular.
 	module("recordmate").
 	controller("AlbumInfoController", ['$scope', '$sce', '$location', 'Search', 'userAuth', 'collection', 'comments',
 		function($scope, $sce, $location, Search, userAuth, collection, comments){
+		
 			//If the user is logged in the $scope element will be true
 			$scope.loggedIn = userAuth.isLogged();
 		
@@ -60,7 +61,9 @@ angular.
 				 */
 				if ($scope.loggedIn) {
 					var username = userAuth.getUser();
-		
+					
+					$scope.username = username.name;
+					
 					//create object to pass to the Add functions
 					var wishItem = {
 						username : username.name,
@@ -79,70 +82,90 @@ angular.
 						collection.collectionAdd(wishItem);
 					};
 				};
-				
+		
 				//Comment section
+		
+				//Will pull comments for album from database
 				var commentRender = function() {
-					comments.commentRender($scope.albumInfo.album.artist, $scope.albumInfo.album.name).success(function(data){
+					comments.commentRender($scope.albumInfo.album.artist, $scope.albumInfo.album.name).success(function(data) {
 						var commentNum = data.comments.length;
-
+		
 						$scope.comments = data.comments;
-						
-						if(commentNum == 0){
+		
+						//Determine the right number and sytax for comments
+						if (commentNum == 0) {
 							$scope.commentCount = "No comments on this album yet!";
-						}
-						else{
-							if(commentNum == 1){
+						} else {
+							if (commentNum == 1) {
 								$scope.commentCount = commentNum + " comment";
-							}
-							else{
+							} else {
 								$scope.commentCount = commentNum + " comments";
 							}
 						}
 					});
 				};
-				
-				$scope.commentSubmit = function(){
+		
+				//when a user submits a comment it's passed to the API
+				$scope.commentSubmit = function() {
 					var username = userAuth.getUser();
-					
+		
 					var commentItem = {
-						username: username.name,
-						email: username.email,
-						artist: $scope.albumInfo.album.artist, 
-						album: $scope.albumInfo.album.name,
-						comment: $scope.commentInput
+						username : username.name,
+						email : username.email,
+						artist : $scope.albumInfo.album.artist,
+						album : $scope.albumInfo.album.name,
+						comment : $scope.commentInput
+					};
+		
+					comments.commentAdd(commentItem).success(function(data) {
+						//upon success re-render the comments
+						commentRender();
+					});
+				};
+		
+		
+				//Allows user to delete a specific comment
+				$scope.deleteComment = function(username, artist, album, comment){
+					var commentItem = {
+						username: username,
+						artist: artist,
+						album: album,
+						comment: comment
 					};
 					
-					comments.commentAdd(commentItem).success(function(data){
+					comments.deleteComment(commentItem).success(function(data){
+						//upon success re-render the comments
 						commentRender();
 					});
 				};
 				
-			//When a comment username is clicked, the user is taken to their profile
-			$scope.profileSearch = function(user) {
-				userAuth.userSearch(user).then(function() {
-					if ($location.path() == '/userProfile') {
-						//rerun the $scope if already on the /userProfile page
-						$scope.$broadcast('rerun');
-					} else {
-						//redirect to user's profile
-						$location.path('/userProfile');
-					}
+				//When a comment username is clicked, the user is taken to their profile
+				$scope.profileSearch = function(user) {
+					userAuth.userSearch(user).then(function() {
+						if ($location.path() == '/userProfile') {
+							//rerun the $scope if already on the /userProfile page
+							$scope.$broadcast('rerun');
+						} else {
+							//redirect to user's profile
+							$location.path('/userProfile');
+						}
 		
-				}, function(err) {
-					//if the user doesn't exist '
-					notifications.showError({
-						message : err.message
+					}, function(err) {
+						//if the user doesn't exist '
+						notifications.showError({
+							message : err.message
+						});
 					});
-				});
-			};				
-				
+				};
+		
+				//render the comments on load
 				commentRender();
-				
-				
+		
 			} else {
 				//if no album info redirect back to home
 				$location.path('/search');
 			}
+		
+			}]);
 
-		}]);
 
