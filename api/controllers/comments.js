@@ -48,7 +48,7 @@ module.exports.commentDelete = function(req, res) {
 		username : req.params.username,
 		artist : req.params.artist,
 		album : req.params.album,
-		comment : req.body.comment,
+		comment : req.params.comment,
 	}, function(err, item) {
 		if (err) {
 			return res.status(500);

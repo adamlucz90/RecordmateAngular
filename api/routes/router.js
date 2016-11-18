@@ -16,7 +16,7 @@ var ctrlComment = require('../controllers/comments');
 //comments
 router.post('/user/:username/artist/:artist/album/:album/comment', ctrlComment.commentAdd);
 router.get('/artist/:artist/album/:album/comment', ctrlComment.commentRender);
-router.post('/user/:username/artist/:artist/album/:album/commentDelete', ctrlComment.commentDelete);
+router.delete('/user/:username/artist/:artist/album/:album/comment/:comment', ctrlComment.commentDelete);
 
 //profile
 router.post('/user/:username/bio', ctrlBio.bioUpdate);

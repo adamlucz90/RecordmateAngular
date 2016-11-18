@@ -23,24 +23,24 @@ angular.
 				return $http.get(url);
 			}
 			
-			var deleteComment = function(comment){
+			var commentDelete = function(comment){
 				var username = encodeURIComponent(comment.username);
 				var artist = encodeURIComponent(comment.artist);
 				var album = encodeURIComponent(comment.album);
+				var comment = encodeURIComponent(comment.comment)
 				
-				var url = '/api/user/:username/artist/:artist/album/:album/commentDelete'.replace(':username', username).replace(':artist', artist).replace(':album', album);
-				return $http.post(url, comment).success(function(data) {
+				var url = '/api/user/:username/artist/:artist/album/:album/comment/:comment'.replace(':username', username).replace(':artist', artist).replace(':album', album).replace(':comment', comment);
+				return $http.delete(url).success(function(data) {
 					notifications.showError({
 						message : "Comment Deleted!"
 					});
 				});
 			}
 			
-			
 			return{
 				commentAdd: commentAdd,
 				commentRender: commentRender,
-				deleteComment: deleteComment
+				commentDelete: commentDelete
 			}
 		}]);
 

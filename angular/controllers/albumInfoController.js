@@ -125,7 +125,10 @@ angular.
 		
 		
 				//Allows user to delete a specific comment
-				$scope.deleteComment = function(username, artist, album, comment){
+				$scope.commentDelete = function(username, artist, album, comment, $event){
+					//keeps the user on the same page
+					$event.preventDefault();
+					
 					var commentItem = {
 						username: username,
 						artist: artist,
@@ -133,7 +136,7 @@ angular.
 						comment: comment
 					};
 					
-					comments.deleteComment(commentItem).success(function(data){
+					comments.commentDelete(commentItem).then(function(){
 						//upon success re-render the comments
 						commentRender();
 					});

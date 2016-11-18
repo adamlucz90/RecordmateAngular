@@ -334,3 +334,7 @@ footer {
 #comments textarea {
 	color: black;
 }
+
+#comment-list p {
+	margin-bottom: 0px;
+}
